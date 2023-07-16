@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@mennet Accéder a vos comptes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/form-styling.css' %}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-... " crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div>
+                <img src="{% static 'ressources/img/amennet.png' %}" class="logoamennet">
+            </div>
+            <div class="slogan-container">
+                <h2 class="slogan">Le Partenaire de votre Succès</h2>
+            </div>
+            <div>
+                <img src="{% static 'ressources/img/AmenbankLogo.png' %}" class="amenbankLogo">
+            </div>
+        </div>
+        </header>
+    </header>
+    <section class="form-section">
+            <form class="form">
+                <div class="container">
+                    <div class="form-container">
+                        <h2>Accéder à mes comptes</h2>
+                        <div class="input">
+                            <h3>Login:</h3>
+                            <input type="text" id="login" name="login" maxlength="15">
+                        </div>
+                        <div class="input">
+                            <h3>Mot de passe:</h3>
+                            <input type="password" id="password" name="password" >
+                        </div>
+                        <div class="submit">
+                            <input type="submit" value="Connexion">
+                        </div>
+                        <div class="note">
+                            « CHER(E) CLIENT(E), LA SÉCURITÉ DE VOS DONNÉES EST ESSENTIELLE POUR VOUS, COMME POUR NOUS. AMEN BANK RENFORCE LA SÉCURITÉ D'ACCÈS À @MENNET PAR L'AUTHENTIFICATION MULTI-FACTEUR MFA. VOUS ÊTES INVITÉS À ACTIVER LE MODE MFA MIS À VOTRE DISPOSITION GRATUITEMENT AFIN DE PROTÉGER VOS DONNÉES ET ÉVITER LE RISQUE DE PIRATAGE. »      
+                            <br>                       
+                            <a href="{% url 'plus' %}"><button class="learn-more" type="button">
+                                <span class="circle" aria-hidden="true">
+                                  <span class="icon arrow"></span>
+                                </span>
+                                <span class="button-text">En savoir plus</span>
+                            </button></a>
+                        </div>
+                    </div>
+                    <div class="img-form">
+                        <img src="{% static 'ressources/img/The Importance Of Solicitors – Get The Best Solicitors.jpeg' %}">
+                        <div class="overlay"></div>
+                        <div class="text-container">
+                            <p>Pour vous permettre de réaliser et de gérer au mieux vos opérations bancaires, nous vous proposons un outil de pointe.</p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+            <ul class="social-networks spin-icon">
+                <li><a href="https://www.linkedin.com/company/amen-bank/" class="icon-linkedin">LinkedIn</a></li>
+                <li><a href="https://twitter.com/AMENBANKTN" class="icon-twitter">Twitter</a></li>
+                <li><a href="https://www.facebook.com/AMENBANK.page.officielle/" class="icon-facebook">Facebook</a></li>
+                <li><a href="https://www.youtube.com/channel/UCnhPXaprDJbYzXKIBTNf9jw" class="icon-youtube">Youtube</a></li>
+                <li><a href="https://www.instagram.com/amen_bank_officielle/" class="icon-instagram">Instagram</a></li>
+            </ul>
+
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="actualites footer-sub-container  ">
+                <h2>Actualites</h2>
+                <p>Face à la situation engendrée par le COVID-19, AMEN BANK continue à se mobiliser afin d'apporter tout son soutien à sa clientèle entreprise par la création d'une plateforme électronique Near.
+                    Cliquer ici pour accéder à votre plateforme Near, afin de pouvoir bénéficier des crédits de soutien et de prorogation.</p>
+            </div>
+            <div class="informations footer-sub-container">
+                <h2>Plus d'informations</h2>
+                <ul>
+                    <li><a href="{% static 'ressources/plus-info/Contrat-abonnement-@mennet.pdf' %}">Téléchargez le contrat d'abonnement</a></li> 
+                    <li><a href="{% static 'ressources/plus-info/Tarification-@mennet.pdf' %}">Tarification appliquée</a></li>
+                    <li><a href="{% static 'ressources/plus-info/Notice_Protection_des_donnees_Personnelles.pdf' %}">Notice Protection des données Personnelles</a></li>
+                </ul>
+                <img  src="{% static 'ressources/img/ISO.png' %}">
+            </div>
+            <div class="contact footer-sub-container">
+                <h2>Contactez-nous</h2>
+                <ul>
+                    <li>
+                    <i class="fas fa-fax"></i> 71833517
+                    </li>
+                    <li>
+                    <i class="fas fa-phone"></i> 71 148 000
+                    </li>
+                    <li>
+                    <i class="far fa-envelope"></i> amenbank@amenbank.com.tn
+                    </li>
+                    <li>
+                    <i class="fas fa-map-marker-alt"></i> AMEN BANK - Av.Mohamed V 1002 Tunis
+                    </li>
+                </ul>
+              </div>              
+        </div>
+        <p class="cp">Copyright © : 2000 - 2023 AMEN BANK - All Rights Reserved</p>
+
+    </footer>
+    <script src="js/form.js"></script>
+</body>
+</html>
+
+

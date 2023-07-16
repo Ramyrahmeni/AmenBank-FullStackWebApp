@@ -1,0 +1,62 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@mennet Accéder a vos comptes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/form-styling.css' %}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-... " crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-..." crossorigin="anonymous">
+
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div>
+                <img src="{% static 'ressources/img/amennet.png' %}" class="logoamennet">
+            </div>
+            <div>
+                <h2 class="slogan">Le Partenaire de votre Succès</h2>
+            </div>
+            <div>
+                <img src="{% static 'ressources/img/amennet.png' %}" class="amenbankLogo">
+            </div>
+        </div>
+        </header>
+        <section style="margin-top: 200px;">
+            <div class="help">
+                <h2>Activation Sécurisation 2FA </h2>
+                <br>
+                <br>
+                <p>Protéger votre compte avec la validation en deux étapes. La validation en deux étapes (également appelée authentification à deux facteurs) vous permet d'ajouter un niveau de sécurité supplémentaire à votre compte afin de le protéger en cas de piratage de votre mot de passe. Une fois la validation en deux étapes configurée, vous vous connecterez à votre compte en deux étapes en utilisant :
+                    <br>
+                    - Un élément connu de vous, comme votre mot de passe.<br>
+                    - Un autre élément en votre possession, comme votre téléphone.
+                    <br>
+                    <br>
+                    Pour activer la "Sécurisation à 2FA" , vous devez vous authentifier via votre login et mot passe et accéder à la rubrique préférence où nous vous guiderons à finaliser votre authentification à double facteurs.</p>
+                    <a href="{% url 'form' %}"><button class="learn-more" type="button">
+                        <span class="circle" aria-hidden="true">
+                          <span class="icon arrow" style="  transform: rotate(180deg);
+                          "></span>
+                        </span>
+                        <span class="button-text">Retour</span>
+                    </button></a>
+            </div>
+            <ul class="social-networks spin-icon">
+                <li><a href="https://www.linkedin.com/company/amen-bank/" class="icon-linkedin">LinkedIn</a></li>
+                <li><a href="https://twitter.com/AMENBANKTN" class="icon-twitter">Twitter</a></li>
+                <li><a href="https://www.facebook.com/AMENBANK.page.officielle/" class="icon-facebook">Facebook</a></li>
+                <li><a href="https://www.youtube.com/channel/UCnhPXaprDJbYzXKIBTNf9jw" class="icon-youtube">Youtube</a></li>
+                <li><a href="https://www.instagram.com/amen_bank_officielle/" class="icon-instagram">Instagram</a></li>
+            </ul>
+
+        </section>
+        <footer>
+            <p style="color:black;text-align: center;">Copyright © : 2000 - 2023 AMEN BANK - All Rights Reserved</p>
+    
+        </footer>
+
+</body>
