@@ -1,0 +1,63 @@
+{% extends 'master.html' %}
+{% block content %}
+
+        <section class="content-section">
+            <div class="title">
+                  <h1>Preferences compte</h1>
+            </div>
+                <form id="form_id" method="POST">
+                  {% csrf_token %}
+                <div class="tbl-content" style="margin-top: 20px;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      <tr>
+                        <td data-label="Compte par defaut">
+                          <h2>Compte par defaut</h2>
+                                {% for account in accounts %}
+                                <div style="display: flex; justify-content: center; align-items: center; column-gap: 20px;">
+                                  <input type="radio" name="default-account" value="{{ account.num_compte }}" {% if user.compte_par_defaut == account.num_compte %}selected{% endif %}>{{ account.num_compte }}
+                                </div>
+                                {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="display: flex; justify-content: center; align-items: center; column-gap: 20px;">
+                                <input type="radio" name="default-account" value="none" {% if not user.compte_par_defaut %}checked{% endif %}>
+                                <p>Aucun compte par defaut</p>
+                            </div>
+                        </td>
+                    </tr>
+                    
+                    </tbody>
+                  </table>
+                  {% for message in messages %}
+                    <div style="text-align: center;">{{ message }}</div>
+                  {% endfor %}
+                </div>
+                <div style="display: flex; justify-content: flex-start;">
+                  <input type="submit" value="Sauvegarder">
+                </div>
+                </form>
+          </section>
+          <section class="options-virement">
+            <ul>
+              <li><a href="{% url 'settings' %}">Profil d'utilisateur</a></li> 
+              <li class="dropdown">
+                <a>Préférences compte</a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'setprfr' %}">Compte par défaut</a></li>
+                  <li><a href="{% url 'setprfrlib' %}">Libellé Compte</a></li>
+                  <li><a href="{% url 'setprfrmail' %}">Alerte Mail</a></li>
+                  <li><a href="{% url 'setprfrsms' %}">Alerte SMS</a></li>
+                  <li><a href="{% url 'setprfrcompteur' %}">Compteur de connexions</a></li>              
+                </ul>
+              </li>
+              <li><a href="{% url 'setmail' %}">Paramètres mailbox</a></li>
+              <li><a href="{% url 'setinf' %}">Informations sur le compte</a></li>        
+              <li><a href="{% url 'security' %}">Mise à jour Mot de Passe</a></li>
+              
+            </ul>   
+        </section>
+  </div> 
+  {% endblock %}

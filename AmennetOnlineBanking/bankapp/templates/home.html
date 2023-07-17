@@ -1,0 +1,74 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+    <section class="content-section">
+      <div class="title">
+            <h1>Vue d'ensembles des comptes</h1>
+            <h2>Vos comptes d'entreprise</h2>
+          </div>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <thead>
+                    <tr>
+                        <th>Numero de compte</th>
+                        <th>Libellé compte</th>
+                        <th>Date solde</th>
+                        <th>Devise</th>
+                        <th>Solde Actuel</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                    {% for account in accounts %}
+                    <tr>
+                        <td data-label="Numero de compte">{{ account.num_compte }}</td>
+                        <td data-label="Libellé compte">{{ account.libelle }}</td>
+                        <td data-label="Date solde">{{ account.date_solde }}</td>
+                        <td data-label="Devise">
+                          <select name="devise" size="1" class="form-control" >
+                            <option value="TND">TND</option>
+                            <option value="AED">AED</option>
+                            <option value="CAD">CAD</option>
+                            <option value="CHF">CHF</option>
+                            <option value="DKK">DKK</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="JPY">JPY</option>
+                            <option value="KWD">KWD</option>
+                            <option value="MAD">MAD</option>
+                            <option value="NOK">NOK</option>
+                            <option value="QAR">QAR</option>
+                            <option value="SAR">SAR</option>
+                            <option value="SEK">SEK</option>
+                            <option value="USD">USD</option>
+                          </select>
+                        </td>
+                        <td data-label="Solde Actuel">{{ account.solde }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="5"><!--Js Variable-->Total de solde est 30000DT</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </section>
+    <section class="options">
+      <ul>
+        <li><a href="home.html">Vue d'ensemble des comptes</a></li> 
+        <li><a href="recherchemouvement.html">Recherche des mouvements</a></li>
+        <li><a href="mvmparop.html">Mouvements par operations</a></li>
+        <li><a href="cfonbparcompteparperiode.html">CFONB par compte par periode</a></li>        
+        <li><a href="cfonbhis.html">Historique CFONB par compte</a></li>
+        <li><a href="cfonbhisglobal.html">Historique CFONB global</a></li>
+    </ul>
+    </section>
+  </div> 
+  {% endblock %}
+</body>

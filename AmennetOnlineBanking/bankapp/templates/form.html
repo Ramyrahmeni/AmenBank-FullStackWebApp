@@ -27,7 +27,8 @@
         </header>
     </header>
     <section class="form-section">
-            <form class="form">
+            <form class="form" action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
                 <div class="container">
                     <div class="form-container">
                         <h2>Accéder à mes comptes</h2>
@@ -39,6 +40,13 @@
                             <h3>Mot de passe:</h3>
                             <input type="password" id="password" name="password" >
                         </div>
+                        {% if messages %}
+                            <ul class="error-messages">
+                                {% for message in messages %}
+                                    <li>{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
                         <div class="submit">
                             <input type="submit" value="Connexion">
                         </div>

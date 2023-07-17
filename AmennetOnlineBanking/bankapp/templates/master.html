@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'styles/form-styling.css' %}"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <title>AdminSite</title>
+        <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+</head>
+<body>
+    <header>
+        <div class="header-container-app">
+            <div class="app-logo">
+                <img src="{% static 'ressources/img/amennet.png' %}" class="logoamennet">
+            </div>
+            <div class="right">
+                <div class="top">
+                    <button id="menu-btn">
+                        <span class="material-icons-sharp" style="font-size: 2rem;"> menu </span>
+                    </button>
+                    <div class="logout"><a href="{% url 'form' %}"><i class="fas fa-sign-out-alt"></i></a>
+                        <a href="{% url 'settings' %}"><i class="fas fa-cog"></i></a>
+                        <a href="security.html"><i class="fas fa-shield-alt"></i></a>
+                    </div> 
+                  <div class="theme-toggler">
+                    <span class="material-icons-sharp active"> light_mode </span>
+                    <span class="material-icons-sharp"> dark_mode </span>
+                  </div>
+                </div>
+
+        </div>
+        </header>
+    <!--Sidebar-->
+    <div style="display: flex;">
+      <aside>
+        <div class="top">
+            <div class="app-logo">
+                <img src="{% static 'ressources/img/amennet.png' %}" class="logoamennet">
+            </div>
+            <div class="close" id="close-btn">
+                <span class="material-icons-sharp"> close </span>
+            </div>
+        </div>
+        <div class="sidebar">
+          <a href="home.html">
+            <span class="material-icons-sharp"> person_outline </span>
+            <h3>Compte</h3>
+          </a>
+            <a href="Virement.html" class="active">
+              <span class="material-icons-sharp">account_balance</span>
+              <h3>Virement</h3>
+            </a>
+            <a href="tele.html">
+              <span class="material-icons-sharp"> receipt_long </span>
+              <h3>Telechargement</h3>
+            </a>
+            <a href="mon.html">
+              <span class="material-icons-sharp"> money </span>
+              <h3>Monétique</h3>
+            </a>
+            <a href="mes.html">
+              <span class="material-icons-sharp"> mail_outline </span>
+              <h3>Messages</h3>
+              <span class="message-count">26</span>
+            </a>
+            <a href="etr.html">
+              <span class="material-icons-sharp"> flight </span>
+              <h3>Bancaire Etranger</h3>
+            </a>
+            <a href="services.html">
+              <span class="material-icons-sharp"> report_gmailerrorred </span>
+              <h3>Services</h3>
+            </a>
+            <a href="fin.html">
+              <span class="material-icons-sharp financement-icon">monetization_on</span>
+
+              <h3>Financement</h3>
+            </a>
+            <a href="cb.html">
+              <span class="material-icons-sharp"> insights </span>
+              <h3>Change/Bourse</h3>
+            </a>
+            <a href="gb.html">
+              <span class="material-icons-sharp budget-icon">account_balance_wallet</span>
+              <h3>Gestion de budget</h3>
+            </a>
+          </div>
+        </aside>
+        <div class="content-op">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    <script src="{% static 'js/Home.js' %}"></script>
+    {% block scripts %}{% endblock %}
+</body>

@@ -1,0 +1,68 @@
+{% extends 'master.html' %}
+
+{% block content %}
+        <section class="content-section">
+            <h1>Préférences compte</h1>
+            <form id="form_id" method="POST">
+              {% csrf_token %}
+                <div class="tbl-content" style="margin-top: 20px;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      {% for account in accounts %}
+                      <tr>
+                        <td data-label="N° de compte:">
+                          <h2>N° de compte:</h2>
+                          <div style="display: flex; justify-content: center;column-gap: 20px;align-items: center;">
+                            <p>{{ account.num_compte }}</p>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td data-label="Alert SMS">
+                          <h2>Alerte SMS</h2>
+                          <div style="display:flex;justify-content: center;align-items: center;column-gap: 60px;">
+                            <div style="display:flex;justify-content: center;align-items: center;column-gap: 20px;">
+                              <input type="radio" name="alert-mail-{{ account.num_compte }}" value="Oui" {% if account.alerte_mail == 'Oui' %}checked{% endif %}>
+                              <p>Oui</p>
+                            </div>
+                            <div style="display:flex;justify-content: center;align-items: center;column-gap: 20px;">
+                              <input type="radio" name="alert-mail-{{ account.num_compte }}" value="Non" {% if account.alerte_mail == 'Non' %}checked{% endif %}>
+                              <p>Non</p>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                      {% endfor %}
+                    
+                    </tbody>
+                  </table>
+                </div>
+                {% for message in messages %}
+                <div style="text-align: center;">{{ message }}</div>
+              {% endfor %}
+                <div style="display: flex; justify-content: flex-start;">
+                  <input type="submit" value="Sauvegarder">
+                </div>
+                </form>
+        </section>
+                <section class="options-virement">
+                  <ul>
+                    <li><a href="{% url 'settings' %}">Profil d'utilisateur</a></li> 
+                    <li class="dropdown">
+                      <a>Préférences compte</a>
+                      <ul class="dropdown-menu">
+                        <li><a href="{% url 'setprfr' %}">Compte par défaut</a></li>
+                        <li><a href="{% url 'setprfrlib' %}">Libellé Compte</a></li>
+                        <li><a href="{% url 'setprfrmail' %}">Alerte Mail</a></li>
+                        <li><a href="{% url 'setprfrsms' %}">Alerte SMS</a></li>
+                        <li><a href="{% url 'setprfrcompteur' %}">Compteur de connexions</a></li>              
+                      </ul>
+                    </li>
+                    <li><a href="{% url 'setmail' %}">Paramètres mailbox</a></li>
+                    <li><a href="{% url 'setinf' %}">Informations sur le compte</a></li>        
+                    <li><a href="{% url 'security' %}">Mise à jour Mot de Passe</a></li>
+                    
+                  </ul>   
+              </section>
+            </div>
+    {% endblock %}
