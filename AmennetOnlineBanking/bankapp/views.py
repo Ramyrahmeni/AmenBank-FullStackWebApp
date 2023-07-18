@@ -8,7 +8,6 @@ from datetime import datetime
 
 
 
-
 # Create your views here.
 def form(request):
     return render(request,"form.html")
@@ -24,7 +23,10 @@ def login(request):
             u = utilisateur.objects.get(login=login)
             if u.mot_de_passe == password:
                 # Authentication successful
-                request.session['login'] = u.login
+                request.session['login'] = u.login        
+                u.nombre_connexions += 1
+                u.save()
+                messages.success(request, "Nombre de connexions mis à jour avec succès.")
                 return redirect('home')  # Redirect to home.html
             else:
                 messages.error(request, 'Invalid password')
@@ -139,11 +141,6 @@ def setprfrcompteur(request):
     login_value = request.session.get('login')
     user = utilisateur.objects.get(login=login_value)
     last_login = datetime.now()
-    if request.method == 'POST':
-        user.nombre_connexions += 1
-          # Update the last login time
-        user.save()
-        messages.success(request, "Nombre de connexions mis à jour avec succès.")
 
     context = {
         'user': user,
@@ -156,8 +153,43 @@ def setmail(request):
     return render(request, 'setmail.html')
 
 def setinf(request):
-    return render(request, 'setinf.html')
+    login_value = request.session.get('login')
+    accounts = Compte.objects.filter(login__login=login_value)
+    context = {
+        'accounts': accounts,
+    }
+    return render(request, 'setinf.html',context)
+
+from django.contrib import messages
 
 def security(request):
-    return render(request, 'security.html')
+    login_value = request.session.get('login')
+    user = utilisateur.objects.get(login=login_value)
+    print('aaaaaaaaaaaaaaaaaaa')
+    if request.method == 'POST':
+        print('bbbbbbbbbbb')
+        user = utilisateur.objects.get(login=login_value)
+        old = request.POST.get('old')
+        if old == user.mot_de_passe:
+            new1 = request.POST.get('new')
+            new2 = request.POST.get('confirm')
+            if new1 == new2:
+                user.mot_de_passe = new1
+                user.save()
+                messages.success(request, 'Mot de passe mis à jour avec succès.')
+            else:
+                messages.error(request, 'Les mots de passe ne sont pas identiques.')
+        else:
+ 
+            messages.error(request, 'Mot de passe incorrect')
+
+    context = {
+        'user': user,
+        'messages': messages.get_messages(request),
+    }
+    return render(request, 'security.html', context)
+
+
+
+
 

@@ -40,13 +40,9 @@
                             <h3>Mot de passe:</h3>
                             <input type="password" id="password" name="password" >
                         </div>
-                        {% if messages %}
-                            <ul class="error-messages">
-                                {% for message in messages %}
-                                    <li>{{ message }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
+                        {% for message in messages %}
+                            <div style="text-align: center;">{{ message }}</div>
+                        {% endfor %}
                         <div class="submit">
                             <input type="submit" value="Connexion">
                         </div>
