@@ -1,0 +1,25 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+    <section class="content-section custom" >
+        <div style="display: flex; margin: 15px;padding: 10px;font-size: 20px;">
+            Vous n'avez aucun document à télécharger.
+        </div>
+    </section>
+    <section class="options">
+      <ul>
+        <ul>
+          <li><a href="{% url 'home' %}">Vue d'ensemble des comptes</a></li>
+          <li><a href="{% url 'recherchemouvement' %}">Recherche des mouvements</a></li>
+          <li><a href="{% url 'mvmparop' %}">Mouvements par opérations</a></li>
+          <li><a href="{% url 'cfonbparcompteparperiode' %}">CFONB par compte par période</a></li>
+          <li><a href="{% url 'cfonbhis' %}">Historique CFONB par compte</a></li>
+          <li><a href="{% url 'cfonbhisglobal' %}">Historique CFONB global</a></li>
+        </ul>
+        
+    </ul>
+    </section>
+  </div> 
+  {% endblock %}

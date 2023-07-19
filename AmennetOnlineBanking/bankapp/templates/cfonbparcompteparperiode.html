@@ -1,0 +1,59 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+    <section class="content-section custom" >
+      <div class="title">
+            <h1>CFONB par compte par période
+            </h1>
+          </div>
+          <form>
+          <div class="tbl-content tbl-rech" style="margin-top: 1rem;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tbody>
+                <tr>
+                    <td data-label="Numero de compte" colspan="2">
+                        <h2>Numero de compte</h2>
+                        <select name="devise" size="1" class="form-control">
+                          {% for account in accounts %}
+                              <option value="{{ account.num_compte }}">{{ account.num_compte }}</option>
+                          {% endfor %}
+                        </select>
+                      </td>
+                <tr>
+                    <tr>
+                        <td data-label="Date du">
+                              <h2>Date du</h2>
+                              <input type="date">
+                        </td>
+                        <td data-label="Au">
+                          <h2>Au</h2>
+                              <input type="date">
+                      </td>
+                      </tr>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="display: flex; justify-content: flex-start;">
+            <input type="submit" value="Valider">
+            <button type="reset">Reset</button>
+          </div>
+          </form>
+    </section>
+    <section class="options">
+      <ul>
+        <ul>
+          <li><a href="{% url 'home' %}">Vue d'ensemble des comptes</a></li>
+          <li><a href="{% url 'recherchemouvement' %}">Recherche des mouvements</a></li>
+          <li><a href="{% url 'mvmparop' %}">Mouvements par opérations</a></li>
+          <li><a href="{% url 'cfonbparcompteparperiode' %}">CFONB par compte par période</a></li>
+          <li><a href="{% url 'cfonbhis' %}">Historique CFONB par compte</a></li>
+          <li><a href="{% url 'cfonbhisglobal' %}">Historique CFONB global</a></li>
+        </ul>
+        
+    </ul>
+    </section>
+  </div> 
+  {% endblock %}

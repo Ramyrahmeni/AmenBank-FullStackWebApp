@@ -1,0 +1,145 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+    <section class="content-section custom" >
+      <div class="title">
+            <h1>Virement compte à compte</h1>
+          </div>
+          <form id="form_id" method="post">
+            {% csrf_token %}
+          <div class="tbl-content tbl-rech" style="margin-top: 1rem;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tbody>
+                <tr>
+                    <td data-label="Compte à créditer:">
+                        <h2>Compte à créditer:</h2>
+                        <select size="1" class="form-control" name="account_number_credit">
+                          {% for account in accounts %}
+                            <option value="{{ account.num_compte }}">{{account.num_compte}}</option>
+                          {% endfor %}
+                        </select>
+                      </td>
+                <tr>
+                    <td data-label="Compte à débiter:">
+                        <h2>Compte à débiter:</h2>
+                        <select size="1" class="form-control" name="account_number_debit">
+                        {% for account in accounts %}
+                            <option value="{{ account.num_compte }}">{{account.num_compte}}</option>
+                        {% endfor %}
+                        </select>
+                      </td>
+                </tr>
+                <tr>
+                    <td data-label="Montant:">
+                        <h2>Montant:</h2>
+                        <input type="number" min_value="0" name="montant">
+                   </td>
+                </tr>
+                <tr>
+                    <td data-label="Date d'excecution:">
+                        <h2>Date d'excecution:</h2>
+                        <input type="date" min_value="0" name="date" required>
+                   </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea name="message" placeholder="Motif de paiement" form="form_id" required></textarea>
+                    </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {% if messages %}
+            {% for message in messages %}
+                    <div style="text-align: center; font-size: 20px;margin-top: 20px;">{{ message }}</div>
+                  {% endfor %}
+          {% endif %}
+          <div style="display: flex; justify-content: flex-start;">
+            <input type="submit" value="Continuer">
+            <button type="reset">Reset</button>
+          </div>
+          </form>
+    </section>
+    <section class="options-virement">
+      <ul>
+        <li class="dropdown">
+          <a>Virement de compte à compte</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'virement' %}">Nouveau virement</a></li>
+            <li><a href="{% url 'virmentsigne' %}">Virement à signer</a></li>
+            <li><a href="{% url 'virhis' %}">Historique des virements</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a>Virement avec benéficiaire</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'virben' %}">Nouveau virement</a></li>
+            <li><a href="{% url 'virbenges' %}">Gestion des benéficiaires</a></li>
+            <li><a href="{% url 'virbensin' %}">Virement à signer</a></li>
+            <li><a href="{% url 'virbenhis' %}">Historique des virements</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a>Virement de masse</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'virmas' %}">Nouveau virement</a></li>
+            <li><a href="{% url 'virmassin' %}">Virement à signer</a></li>
+            <li><a href="{% url 'virmashis' %}">Historique des virements</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a>Virement permanant</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'virper' %}">Virement Permanent de compte à compte</a></li>
+            <li><a href="{% url 'virperben' %}">Virement Permanent avec benéficiaire</a></li>
+            <li><a href="{% url 'virperlis' %}">Liste des virement permanants</a></li>
+            <li><a href="{% url 'virpersin' %}">Virement permanant à signer</a></li>
+          </ul>
+        </li>
+        <li><a href="{%url  'modvir' %}">Modèles virements</a></li>
+      </ul>
+      
+    </section>
+
+      
+  </div> 
+  <script>
+    const form = document.getElementById('form_id');
+    const dateInput = form.querySelector('input[name="date"]');
+    const compteDebiterInput = form.querySelector('select[name="account_number_debit"]');
+    const compteCrediterInput = form.querySelector('select[name="account_number_credit"]');
+    const montantInput = form.querySelector('input[name="montant"]');
+    const today = new Date();
+    const oneWeekAhead = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000); // One week in milliseconds
+  
+    // Add event listener to the form on submit
+    form.addEventListener('submit', function (event) {
+      // Check if the date is at least one week ahead
+      const selectedDate = new Date(dateInput.value);
+      if (selectedDate < oneWeekAhead) {
+        alert('La date d\'exécution doit être au moins une semaine à partir d\'aujourd\'hui.');
+        event.preventDefault(); // Prevent form submission
+        return;
+      }
+  
+      // Check if compte a debiter is different from compte a crediter
+      if (compteDebiterInput.value === compteCrediterInput.value) {
+        alert('Le compte à débiter doit être différent du compte à créditer.');
+        event.preventDefault(); // Prevent form submission
+        return;
+      }
+  
+      // Check if montant is positive
+      const montant = parseFloat(montantInput.value);
+      if (montant <= 0 || isNaN(montant)) {
+        alert('Le montant doit être un nombre positif.');
+        event.preventDefault(); // Prevent form submission
+        return;
+      }
+  
+      // Form validation passed, continue with form submission
+    });
+  </script>
+  {% endblock %}

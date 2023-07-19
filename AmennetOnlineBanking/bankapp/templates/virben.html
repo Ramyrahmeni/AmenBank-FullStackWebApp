@@ -1,0 +1,205 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section custom" >
+            <div class="title">
+                  <h1>Virement avec benéficiaire</h1>
+                </div>
+                <form id="form_id" method="post">
+                  {% csrf_token %}
+                <div class="tbl-content tbl-rech" style="margin-top: 1rem;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      <tr>
+                          <td data-label="Compte à créditer:">
+                              <h2>Compte à créditer:</h2>
+                              <select size="1" class="form-control" name="account_number_credit">
+                                {% for account in accounts %}
+                                  <option value="{{ account.num_compte }}">{{account.num_compte}}</option>
+                                {% endfor %}
+                              </select>
+                            </td>
+                      <tr>
+                          <td data-label="Compte à débiter:">
+                              <h2>Compte à débiter:</h2>
+                              <select size="1" class="form-control" name="account_number_debit">
+                                {% for account in accounts %}
+                                    <option value="{{ account.num_compte }}">{{account.num_compte}}</option>
+                                {% endfor %}
+                                </select>
+                            </td>
+                      </tr>
+                      <tr>
+                          <td data-label="Montant:">
+                              <h2>Montant:</h2>
+                              <input type="number" min_value="0" name="montant">
+                            </td>
+                      </tr>
+                      <tr>
+                          <td data-label="Date d'excecution:">
+                              <h2>Date d'excecution:</h2>
+                              <input type="date" min_value="0" name="date" required>
+                            </td>
+                      </tr>
+                      <tr>
+                          <td>
+                            <h3 style="text-align: center;font-weight: 700;">Bénéficiaire</h3>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td data-label="Numero de compte:">
+                              <h2>Numero de compte:</h2>
+                              <input type="text" name="ben" required>
+                         </td>
+                      </tr>
+                      <tr>
+                          <td data-label="Nom/Raison Sociale:">
+                              <h2>Nom/Raison Sociale:</h2>
+                              <input type="text" name="raison" required>
+                         </td>
+                      </tr>
+                      <tr>
+                          <td data-label="Bank:">
+                            <h2>Bank:</h2>
+                            <select size="1" class="form-control" id="banque" name="banque">
+                              <option value="ATB">ATB</option>
+                              <option value="BFT">BFT</option>
+                              <option value="BNA">BNA</option>
+                              <option value="AMEN BANK">AMEN BANK</option>
+                              <option value="ATTIJARI">ATTIJARI</option>
+                              <option value="BT">BT</option>
+                              <option value="BDET">BDET</option>
+                              <option value="STB">STB</option>
+                              <option value="UBCI">UBCI</option>
+                              <option value="BIAT">BIAT</option>
+                              <option value="BCT">BCT</option>
+                              <option value="UIB">UIB</option>
+                              <option value="BH">BH</option>
+                              <option value="CBNA">CBNA</option>
+                              <option value="CCP">CCP</option>
+                              <option value="BNDT">BNDT</option>
+                              <option value="BTK">BTK</option>
+                              <option value="STUSID">STUSID</option>
+                              <option value="TQB">TQB</option>
+                              <option value="BTE">BTE</option>
+                              <option value="BTL">BTL</option>
+                              <option value="BTS">BTS</option>
+                              <option value="ABC">ABC</option>
+                              <option value="BCMA">BCMA</option>
+                              <option value="AL BARAKA">AL BARAKA</option>
+                              <option value="NAIB">NAIB</option>
+                              <option value="ALUBAF">ALUBAF</option>
+                              <option value="UTB">UTB</option>
+                              <option value="TIB">TIB</option>
+                              <option value="LINC">LINC</option>
+                              <option value="CITI BANK">CITI BANK</option>
+                              <option value="ABC TS">ABC TS</option>
+                              <option value="ALUBAF">ALUBAF</option>
+                              <option value="AUTRES">AUTRES</option>
+                              <option value="BZ">BZ</option>
+                          </select>
+                          
+                          </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <textarea name="message" placeholder="Motif de paiement" form="form_id" required></textarea>
+                        </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+                {% if messages %}
+                  {% for message in messages %}
+                          <div style="text-align: center; font-size: 20px;margin-top: 20px;">{{ message }}</div>
+                        {% endfor %}
+                {% endif %}
+                <div style="display: flex; justify-content: flex-start;">
+                  <input type="submit" value="Continuer">
+                  <button type="reset">Reset</button>
+                </div>
+                </form>
+          </section>
+          <section class="options-virement">
+            <ul>
+              <li class="dropdown">
+                <a>Virement de compte à compte</a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'virement' %}">Nouveau virement</a></li>
+                  <li><a href="{% url 'virmentsigne' %}">Virement à signer</a></li>
+                  <li><a href="{% url 'virhis' %}">Historique des virements</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a>Virement avec benéficiaire</a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'virben' %}">Nouveau virement</a></li>
+                  <li><a href="{% url 'virbenges' %}">Gestion des benéficiaires</a></li>
+                  <li><a href="{% url 'virbensin' %}">Virement à signer</a></li>
+                  <li><a href="{% url 'virbenhis' %}">Historique des virements</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a>Virement de masse</a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'virmas' %}">Nouveau virement</a></li>
+                  <li><a href="{% url 'virmassin' %}">Virement à signer</a></li>
+                  <li><a href="{% url 'virmashis' %}">Historique des virements</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a>Virement permanant</a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'virper' %}">Virement Permanent de compte à compte</a></li>
+                  <li><a href="{% url 'virperben' %}">Virement Permanent avec benéficiaire</a></li>
+                  <li><a href="{% url 'virperlis' %}">Liste des virement permanants</a></li>
+                  <li><a href="{% url 'virpersin' %}">Virement permanant à signer</a></li>
+                </ul>
+              </li>
+              <li><a href="{%url  'modvir' %}">Modèles virements</a></li>
+            </ul>
+            
+          </section>
+      
+      
+  </div> 
+  <script>
+    const form = document.getElementById('form_id');
+    const dateInput = form.querySelector('input[name="date"]');
+    const compteDebiterInput = form.querySelector('select[name="account_number_debit"]');
+    const compteCrediterInput = form.querySelector('select[name="account_number_credit"]');
+    const montantInput = form.querySelector('input[name="montant"]');
+    const today = new Date();
+    const oneWeekAhead = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000); // One week in milliseconds
+  
+    // Add event listener to the form on submit
+    form.addEventListener('submit', function (event) {
+      // Check if the date is at least one week ahead
+      const selectedDate = new Date(dateInput.value);
+      if (selectedDate < oneWeekAhead) {
+        alert('La date d\'exécution doit être au moins une semaine à partir d\'aujourd\'hui.');
+        event.preventDefault(); // Prevent form submission
+        return;
+      }
+  
+      // Check if compte a debiter is different from compte a crediter
+      if (compteDebiterInput.value === compteCrediterInput.value) {
+        alert('Le compte à débiter doit être différent du compte à créditer.');
+        event.preventDefault(); // Prevent form submission
+        return;
+      }
+  
+      // Check if montant is positive
+      const montant = parseFloat(montantInput.value);
+      if (montant <= 0 || isNaN(montant)) {
+        alert('Le montant doit être un nombre positif.');
+        event.preventDefault(); // Prevent form submission
+        return;
+      }
+  
+      // Form validation passed, continue with form submission
+    });
+  </script>
+{% endblock %}

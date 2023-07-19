@@ -1,0 +1,56 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section custom" >
+            <h1>Liste des virements de masses à signer</h1>
+            <div style="display: flex; margin: 15px;padding: 10px;font-size: 20px;">
+                Votre liste des virements à signer est vide.
+            </div>
+        </section>
+        <section class="options-virement">
+          <ul>
+            <li class="dropdown">
+              <a>Virement de compte à compte</a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'virement' %}">Nouveau virement</a></li>
+                <li><a href="{% url 'virmentsigne' %}">Virement à signer</a></li>
+                <li><a href="{% url 'virhis' %}">Historique des virements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a>Virement avec benéficiaire</a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'virben' %}">Nouveau virement</a></li>
+                <li><a href="{% url 'virbenges' %}">Gestion des benéficiaires</a></li>
+                <li><a href="{% url 'virbensin' %}">Virement à signer</a></li>
+                <li><a href="{% url 'virbenhis' %}">Historique des virements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a>Virement de masse</a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'virmas' %}">Nouveau virement</a></li>
+                <li><a href="{% url 'virmassin' %}">Virement à signer</a></li>
+                <li><a href="{% url 'virmashis' %}">Historique des virements</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a>Virement permanant</a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'virper' %}">Virement Permanent de compte à compte</a></li>
+                <li><a href="{% url 'virperben' %}">Virement Permanent avec benéficiaire</a></li>
+                <li><a href="{% url 'virperlis' %}">Liste des virement permanants</a></li>
+                <li><a href="{% url 'virpersin' %}">Virement permanant à signer</a></li>
+              </ul>
+            </li>
+            <li><a href="{%url  'modvir' %}">Modèles virements</a></li>
+          </ul>
+          
+        </section>
+    
+    
+      
+  </div> 
+  {% endblock %}

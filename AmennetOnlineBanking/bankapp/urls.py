@@ -5,6 +5,11 @@ urlpatterns = [
     path('plus/', views.plus,name='plus'),#urlpatterns = [
     path('login/', views.login, name='login'),
     path('home/', views.home, name='home'),
+    path('recherchemouvement/', views.recherchemouvement_view, name='recherchemouvement'),
+    path('mvmparop/', views.mvmparop_view, name='mvmparop'),
+    path('cfonbparcompteparperiode/', views.cfonbparcompteparperiode_view, name='cfonbparcompteparperiode'),
+    path('cfonbhis/', views.cfonbhis_view, name='cfonbhis'),
+    path('cfonbhisglobal/', views.cfonbhisglobal_view, name='cfonbhisglobal'),
     path('settings/', views.settings, name='settings'),
     path('setprfr/', views.setprfr, name='setprfr'),
     path('setprfrlib/', views.setprfrlib, name='setprfrlib'),
@@ -14,6 +19,19 @@ urlpatterns = [
     path('setmail/', views.setmail, name='setmail'),
     path('setinf/', views.setinf, name='setinf'),
     path('security/', views.security, name='security'),
-
-    # Other URL patterns
+    path('virement/', views.virement, name='virement'),
+    path('virmentsigne/', views.virmentsigne_view, name='virmentsigne'),
+    path('virhis/', views.virhis_view, name='virhis'),
+    path('virben/', views.virben_view, name='virben'),
+    path('virbenges/', views.virbenges_view, name='virbenges'),
+    path('virbensin/', views.virbensin_view, name='virbensin'),
+    path('virbenhis/', views.virbenhis_view, name='virbenhis'),
+    path('virmas/', views.virmas_view, name='virmas'),
+    path('virmassin/', views.virmassin_view, name='virmassin'),
+    path('virmashis/', views.virmashis_view, name='virmashis'),
+    path('virper/', views.virper_view, name='virper'),
+    path('virperben/', views.virperben_view, name='virperben'),
+    path('virperlis/', views.virperlis_view, name='virperlis'),
+    path('virpersin/', views.virpersin_view, name='virpersin'),
+    path('modvir/', views.modvir_view, name='modvir'),
 ]

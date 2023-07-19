@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-    <title>AdminSite</title>
+    <title>@mennnet Online Banking</title>
         <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"
       rel="stylesheet"
@@ -31,7 +31,7 @@
                     </button>
                     <div class="logout"><a href="{% url 'form' %}"><i class="fas fa-sign-out-alt"></i></a>
                         <a href="{% url 'settings' %}"><i class="fas fa-cog"></i></a>
-                        <a href="security.html"><i class="fas fa-shield-alt"></i></a>
+                        <a href="{% url 'security' %}"><i class="fas fa-shield-alt"></i></a>
                     </div> 
                   <div class="theme-toggler">
                     <span class="material-icons-sharp active"> light_mode </span>
@@ -53,11 +53,11 @@
             </div>
         </div>
         <div class="sidebar">
-          <a href="home.html">
+          <a href="{% url 'home' %}">
             <span class="material-icons-sharp"> person_outline </span>
             <h3>Compte</h3>
           </a>
-            <a href="Virement.html" class="active">
+            <a href="{% url 'virement' %}" class="active">
               <span class="material-icons-sharp">account_balance</span>
               <h3>Virement</h3>
             </a>

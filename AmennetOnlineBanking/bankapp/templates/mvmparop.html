@@ -1,0 +1,127 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+    <section class="content-section custom" >
+      <div class="title">
+            <h1>Mouvement par opération</h1>
+          </div>
+          <form method="post">
+            {% csrf_token %}
+          <div class="tbl-content tbl-rech" style="margin-top: 1rem;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tbody>
+                <tr>
+                    <td data-label="Numero de compte">
+                        <h2>Numero de compte</h2>
+                        <select  size="1" class="form-control" name="account_number">
+                          {% for account in accounts %}
+                      <option value="{{ account.num_compte }}">{{ account.num_compte }}</option>
+                      {% endfor %}
+                        </select>
+                      </td>
+                <tr>
+                    <td data-label="Option d'affichage">
+                        <h2>Option d'affichage</h2>
+                        <select size="1" class="form-control" name="display_options">
+                          <option>Tableau</option>
+                          <option>Présentation graphique</option>
+                        </select>
+                      </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          {% if display_option == 'Tableau' %}
+          {% if movements %}
+<table>
+  <thead>
+    <tr>
+      <th style="color: rgb(174, 174, 174);">Compte</th>
+      <th style="color: rgb(174, 174, 174);">Date</th>
+      <th style="color: rgb(174, 174, 174);">Montant</th>
+      <th style="color: rgb(174, 174, 174);">Description</th>
+      <th style="color: rgb(174, 174, 174);">Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for movement in movements %}
+    <tr>
+      <td data-label="Compte">{{ movement.compte.num_compte }}</td>
+      <td data-label="Date">{{ movement.date }}</td>
+      <td data-label="Montant">{{ movement.montant }}</td>
+      <td data-label="Description">{{ movement.description }}</td>
+      <td data-label="Type">{{ movement.type }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>Aucun mouvement.</p>
+{% endif %}
+{% else %}
+<canvas id="chart"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+ const chartData = JSON.parse('{{ chart_data|escapejs }}');
+
+const x=chartData
+const labels = x.labels;
+const data = x.data;
+console.log(data)
+  const ctx = document.getElementById('chart').getContext('2d');
+  console.log(x)
+  new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: labels,
+    datasets: [{
+      label: 'Montant',
+      data: data,
+      backgroundColor: 'rgba(0, 123, 255, 0.2)',
+      borderColor: 'rgba(0, 123, 255, 1)',
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        title: {
+          display: true,
+          text: 'Montant'
+        },
+        min: 0, // Set the minimum value of the y-axis
+        max: 10000, // Set the maximum value of the y-axis
+        ticks: {
+          stepSize: 1000, // Set the interval between ticks on the y-axis
+          precision: 0 // Set the number of decimal places to display
+        }
+      }
+    }
+  }
+});
+
+</script>
+{% endif %}
+
+          <div style="display: flex; justify-content: flex-start;">
+            <input type="submit" value="Afficher">
+            <button type="reset">Reset</button>
+          </div>
+          </form>
+    </section>
+    <section class="options">
+        <ul>
+          <li><a href="{% url 'home' %}">Vue d'ensemble des comptes</a></li>
+          <li><a href="{% url 'recherchemouvement' %}">Recherche des mouvements</a></li>
+          <li><a href="{% url 'mvmparop' %}">Mouvements par opérations</a></li>
+          <li><a href="{% url 'cfonbparcompteparperiode' %}">CFONB par compte par période</a></li>
+          <li><a href="{% url 'cfonbhis' %}">Historique CFONB par compte</a></li>
+          <li><a href="{% url 'cfonbhisglobal' %}">Historique CFONB global</a></li>
+        </ul>
+        
+    </section>
+  </div> 
+  {% endblock %}

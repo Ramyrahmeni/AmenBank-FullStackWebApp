@@ -1,0 +1,81 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section">
+            <div class="title">
+                  <h1>Gestion des bénéficiaires</h1>
+                </div>
+                <div class="tbl-header">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                      <tr>
+                        <th>Nom /Raison Sociale</th>
+                        <th>Bank</th>
+                        <th>Date solde</th>
+                        <th>Devise</th>
+                        <th>Numero de compte</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <div class="tbl-content">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      
+                      <tr>
+                        <td data-label="Nom/Raison sociale">Compte benéficiaire Demo 1</td>
+                        <td data-label="Bank">Amen Bank</td>
+                        <td data-label="Date solde">15/08/2015</td>
+                        <td data-label="Devise">TND</td>
+                        <td data-label="Numero DE compte">07000000000000000056</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+          </section>
+          <section class="options-virement">
+            <ul>
+              <li class="dropdown">
+                <a>Virement de compte à compte</a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'virement' %}">Nouveau virement</a></li>
+                  <li><a href="{% url 'virmentsigne' %}">Virement à signer</a></li>
+                  <li><a href="{% url 'virhis' %}">Historique des virements</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a>Virement avec benéficiaire</a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'virben' %}">Nouveau virement</a></li>
+                  <li><a href="{% url 'virbenges' %}">Gestion des benéficiaires</a></li>
+                  <li><a href="{% url 'virbensin' %}">Virement à signer</a></li>
+                  <li><a href="{% url 'virbenhis' %}">Historique des virements</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a>Virement de masse</a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'virmas' %}">Nouveau virement</a></li>
+                  <li><a href="{% url 'virmassin' %}">Virement à signer</a></li>
+                  <li><a href="{% url 'virmashis' %}">Historique des virements</a></li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a>Virement permanant</a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'virper' %}">Virement Permanent de compte à compte</a></li>
+                  <li><a href="{% url 'virperben' %}">Virement Permanent avec benéficiaire</a></li>
+                  <li><a href="{% url 'virperlis' %}">Liste des virement permanants</a></li>
+                  <li><a href="{% url 'virpersin' %}">Virement permanant à signer</a></li>
+                </ul>
+              </li>
+              <li><a href="{%url  'modvir' %}">Modèles virements</a></li>
+            </ul>
+            
+          </section>
+      
+      
+  </div> 
+  {% endblock %}

@@ -1,0 +1,100 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+    <section class="content-section custom" >
+      <div class="title">
+            <h1>Recherche Operation</h1>
+          </div>
+          <div class="tbl-content tbl-rech" style="margin-top: 1rem;">
+            <form method="POST">
+              {% csrf_token %}
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tbody>
+                <tr>
+                  <td data-label="Numero de compte">
+                    <h2>Numero de compte</h2>
+                    <select name="account_number" size="1" class="form-control">
+                      {% for account in accounts %}
+                      <option value="{{ account.num_compte }}">{{ account.num_compte }}</option>
+                      {% endfor %}
+                    </select>
+                  </td>
+                  <td data-label="Mouvements">
+                    <h2>Mouvements</h2>
+                    <select name="type" size="1" class="form-control">
+                      <option value="Debit">Debit</option>
+                      <option value="Credit">Credit</option>
+                    </select>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Montant minimum">
+                    <h2>Montant minimum</h2>
+                    <input type="number" min="0" name="mntmin">
+                  </td>
+                  <td data-label="Montant maximum">
+                    <h2>Montant maximum</h2>
+                    <input type="number" min="0" name="mntmax">
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Date du">
+                    <h2>Date du</h2>
+                    <input type="date" name="datemin">
+                  </td>
+                  <td data-label="Au">
+                    <h2>Au</h2>
+                    <input type="date" name="datemax">
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            
+          </div>
+          {% if results %}
+            <table>
+              <thead>
+                <tr>
+                  <th style="color: rgb(176, 175, 175);">Compte</th>
+                  <th style="color: rgb(176, 175, 175);">Date</th>
+                  <th style="color: rgb(176, 175, 175);">Montant</th>
+                  <th style="color: rgb(176, 175, 175);">Description</th>
+                  <th style="color: rgb(176, 175, 175);">Type</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for result in results %}
+                <tr>
+                  <td>{{ result.compte.num_compte }}</td>
+                  <td>{{ result.date }}</td>
+                  <td>{{ result.montant }}</td>
+                  <td>{{ result.description }}</td>
+                  <td>{{ result.get_type_display }}</td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% endif %}
+          <div style="display: flex; justify-content: flex-start;">
+            <input type="submit" value="Rechercher">
+            <button type="reset">Reset</button>
+          </div>
+          </form>
+    </section>
+    <section class="options">
+      <ul>
+        <ul>
+          <li><a href="{% url 'home' %}">Vue d'ensemble des comptes</a></li>
+          <li><a href="{% url 'recherchemouvement' %}">Recherche des mouvements</a></li>
+          <li><a href="{% url 'mvmparop' %}">Mouvements par opérations</a></li>
+          <li><a href="{% url 'cfonbparcompteparperiode' %}">CFONB par compte par période</a></li>
+          <li><a href="{% url 'cfonbhis' %}">Historique CFONB par compte</a></li>
+          <li><a href="{% url 'cfonbhisglobal' %}">Historique CFONB global</a></li>
+        </ul>
+        
+    </ul>
+    </section>
+  </div> 
+  {% endblock %}
