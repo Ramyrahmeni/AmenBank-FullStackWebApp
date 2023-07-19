@@ -87,6 +87,30 @@ class VirementPermanant(models.Model):
 
     def __str__(self):
         return f"Virement permanant #{self.pk} , Montant: {self.montant},Beneficiaire:{self.beneficiaire}"
+class Message_Agence(models.Model):
+    login = models.ForeignKey(utilisateur, on_delete=models.CASCADE, to_field='login')
+    objet=models.CharField(max_length=1000)
+    agence=models.CharField(max_length=1000)
+    numero_tel=models.IntegerField()
+    message=models.TextField()
+    def __str__(self):
+        return f"message de {self.login} vers {self.agence}"
+class Message_Support(models.Model):
+    login = models.ForeignKey(utilisateur, on_delete=models.CASCADE, to_field='login')
+    numero_tel=models.IntegerField()
+    message_erreur=models.TextField()
+    system_exploitation=models.CharField(max_length=100)
+    service_pack=models.CharField(max_length=100)
+    navigateur=models.CharField(max_length=100)
+    fournisseur_internet=models.CharField(max_length=100)
+    communication=models.CharField(max_length=100)
+    def __str__(self):
+        return f"message de {self.login}"
+
+
+
+
+
     
     
  

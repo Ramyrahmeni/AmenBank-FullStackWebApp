@@ -1,0 +1,193 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+    <section class="content-section">
+      <div class="title">
+            <h1>Deblocage carte internationale</h1>
+          </div>
+          <form id="form_id">
+          <div class="tbl-content" style="margin-top: 20px;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tbody>
+                
+                <tr>
+                    <td data-label="Compte à créditer:">
+                        <h2>Liste des comptes:</h2>
+                        <select size="1" class="form-control">
+                          <option>Aucun</option>
+                          <option>000110123456</option>
+                          <option>000110123456</option>
+                        </select>
+                      </td>
+                <tr>
+                    <tr>
+                        <td data-label="Montant:">
+                            <h2>Montant:</h2>
+                            <input type="number" min_value="0">
+                       </td>
+                    </tr>
+                  <tr>
+                    <td data-label="Date du:">
+                        <h2>Date du:</h2>
+                        <input type="date" min_value="0">
+                   </td>
+                </tr>
+                <tr>
+                  <td data-label="Au:">
+                      <h2>Au:</h2>
+                      <input type="date" min_value="0">
+                 </td>
+              </tr>
+              <tr>
+                <td data-label="Pays">
+                    <h2>Pays</h2>
+                    <select name="country" size="1" class="form-control" id="country">
+                        <option value="Tous">Tous</option>
+                        <option value="Tunisie">Tunisie</option>
+                        <option value="ZA">Afrique du Sud</option>
+                        <option value="AL">Albanie</option>
+                        <option value="DZ">Algérie</option>
+                        <option value="DE">Allemagne</option>
+                        <option value="SA">Arabie Saoudite</option>
+                        <option value="AR">Argentine</option>
+                        <option value="AU">Australie</option>
+                        <option value="AT">Autriche</option>
+                        <option value="BH">Bahreïn</option>
+                        <option value="BE">Belgique</option>
+                        <option value="BY">Biélo-Russie</option>
+                        <option value="BO">Bolivie</option>
+                        <option value="BA">Bosnie-Herzégovine</option>
+                        <option value="BR">Brésil</option>
+                        <option value="BG">Bulgarie</option>
+                        <option value="CA">Canada</option>
+                        <option value="CL">Chili</option>
+                        <option value="CN">Chine</option>
+                        <option value="CY">Chypre</option>
+                        <option value="CO">Colombie</option>
+                        <option value="KR">Corée du Sud</option>
+                        <option value="CR">Costa Rica</option>
+                        <option value="HR">Croatie</option>
+                        <option value="DK">Danemark</option>
+                        <option value="EG">Egypte</option>
+                        <option value="SV">El Salvador</option>
+                        <option value="AE">Emirats Arabes Unis</option>
+                        <option value="EC">Equateur</option>
+                        <option value="ES">Espagne</option>
+                        <option value="EE">Estonie</option>
+                        <option value="US">Etats-Unis</option>
+                        <option value="FI">Finlande</option>
+                        <option value="FR">France</option>
+                        <option value="GR">Grèce</option>
+                        <option value="GT">Guatemala</option>
+                        <option value="HN">Honduras</option>
+                        <option value="HK">Hong-Kong</option>
+                        <option value="HU">Hongrie</option>
+                        <option value="IN">Inde</option>
+                        <option value="ID">Indonésie</option>
+                        <option value="IQ">Irak</option>
+                        <option value="IE">Irlande</option>
+                        <option value="IS">Islande</option>
+                        <option value="IL">Israël</option>
+                        <option value="IT">Italie</option>
+                        <option value="JP">Japon</option>
+                        <option value="JO">Jordanie</option>
+                        <option value="KW">Koweit</option>
+                        <option value="LV">Lettonie</option>
+                        <option value="LB">Liban</option>
+                        <option value="LY">Libye</option>
+                        <option value="LT">Lithuanie</option>
+                        <option value="LU">Luxembourg</option>
+                        <option value="MK">Macédoine</option>
+                        <option value="MY">Malaisie</option>
+                        <option value="MT">Malte</option>
+                        <option value="MA">Maroc</option>
+                        <option value="MX">Mexique</option>
+                        <option value="ME">Monténégro</option>
+                        <option value="NI">Nicaragua</option>
+                        <option value="NO">Norvège</option>
+                        <option value="NZ">Nouvelle-Zélande</option>
+                        <option value="OM">Oman</option>
+                        <option value="PA">Panama</option>
+                        <option value="PY">Paraguay</option>
+                        <option value="NL">Pays-Bas</option>
+                        <option value="PE">Pérou</option>
+                        <option value="PH">Philippines</option>
+                        <option value="PL">Pologne</option>
+                        <option value="PR">Porto Rico</option>
+                        <option value="PT">Portugal</option>
+                        <option value="QA">Qatar</option>
+                        <option value="DO">République Dominicaine</option>
+                        <option value="CZ">République Tchèque</option>
+                        <option value="RO">Roumanie</option>
+                        <option value="GB">Royaume-Uni</option>
+                        <option value="RU">Russie</option>
+                        <option value="RS">Serbie</option>
+                        <option value="CS">Serbie et Monténégro</option>
+                        <option value="SG">Singapour</option>
+                        <option value="SK">Slovaquie</option>
+                        <option value="SI">Slovénie</option>
+                        <option value="SD">Soudan</option>
+                        <option value="SE">Suède</option>
+                        <option value="CH">Suisse</option>
+                        <option value="SY">Syrie</option>
+                        <option value="TW">Taiwan</option>
+                        <option value="TH">Thaïlande</option>
+                        <option value="TN">Tunisie</option>
+                        <option value="TR">Turquie</option>
+                        <option value="UA">Ukraine</option>
+                        <option value="UY">Uruguay</option>
+                        <option value="VE">Vénézuela</option>
+                        <option value="VN">Vietnam</option>
+                        <option value="YE">Yémen</option>
+                    </select>
+                </td>
+              </tr>
+              <tr>
+                <td data-label="Nombre Maximal de Trnx (par jour):">
+                    <h2>Nombre Maximal de Trnx (par jour):</h2>
+                    <input type="number" min_value="0">
+               </td>
+            </tr>
+            <tr>
+                <td data-label="Montant Maximal de Trnx (en DT par jour):">
+                    <h2>Montant Maximal de Trnx (en DT par jour):
+                    </h2>
+                    <input type="number" min_value="0">
+               </td>
+            </tr>
+            <tr>
+                <td data-label="Montant Maximal de Trnx (en DT par jour):">
+                    <div style="display: flex; justify-content: center; column-gap: 10px;margin-bottom: 10px;"><input type="checkbox"><p>Acceptation des transactions à Piste</p></div>
+                    <div style="display: flex; justify-content: center; column-gap: 10px;"><input type="checkbox"><p>Acceptation des transactions E-commerce</p></div>
+               </td>
+            </tr>
+            <tr>
+                <td data-label="Montant Maximal de Trnx (en DT par jour):">
+                    <h2>Conditions de Deblocage</h2>
+                    <p>Cher client, nous vous prions de bien vouloir Cliquer sur le bouton aperçu pour afficher les conditions de déblocage</p>
+                    <div style="display: flex; justify-content: center; column-gap: 10px; margin-top: 10px;"><input type="Radio" name="choice"><p>je n'accepte pas les conditions de déblocage</p></div>
+                    <div style="display: flex; justify-content: center; column-gap: 10px; margin-top: 10px;"><input type="Radio" name="choice"><p>j'accepte pas les conditions de déblocag</p></div>
+               </td>
+            </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="display: flex; justify-content: flex-start;">
+            <input type="submit" value="Valider">
+            <button type="reset">Reinitialiser</button>
+          </div>
+          </form>
+    </section>
+    <section class="options">
+      <ul>
+        <li><a href="{% url 'mon' %}">Consultation mouvements TPE</a></li>
+        <li><a href="{% url 'monrech' %}">Recharge carte prepayee</a></li>
+        <li><a href="{% url 'mondeb' %}">Deblocage carte internationale</a></li>
+        <li><a href="{% url 'monopp' %}">Opposition sur carte</a></li>
+            
+    </ul>
+    </section>
+  </div> 
+{% endblock %}

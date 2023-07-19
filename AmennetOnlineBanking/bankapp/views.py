@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
-from .models import utilisateur,Compte,MouvementBancaire,Virement,VirementPermanant
+from .models import utilisateur,Compte,MouvementBancaire,Virement,VirementPermanant,Message_Agence,Message_Support
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from datetime import datetime
@@ -492,3 +492,139 @@ def virpersin_view(request):
 
 def modvir_view(request):
     return render(request, 'modvir.html')
+def mon_view(request):
+    return render(request, 'mon.html')
+
+def monrech_view(request):
+    return render(request, 'monrech.html')
+
+def mondeb_view(request):
+    return render(request, 'mondeb.html')
+
+def monopp_view(request):
+    return render(request, 'monopp.html')
+
+def ouverture_lc_view(request):
+    # Add your logic for OuvertureLC view here
+    return render(request, 'tele.html')
+
+def transfert_emis_tre_view(request):
+    # Add your logic for Transfert emis - TRE view here
+    return render(request, 'telete.html')
+
+def transfert_recus_trr_view(request):
+    # Add your logic for Transfert recus - TRR view here
+    return render(request, 'teletr.html')
+
+def avis_operation_pdf_view(request):
+    # Add your logic for Avis d'opération (PDF) view here
+    return render(request, 'teleaop.html')
+
+def avis_operation_text_view(request):
+    # Add your logic for Avis d'opération (text) view here
+    return render(request, 'teleaot.html')
+
+def situation_effets_view(request):
+    # Add your logic for Situation des effets view here
+    return render(request, 'telees.html')
+
+def cro_effet_structured_view(request):
+    # Add your logic for CRO effet structuré view here
+    return render(request, 'telecro.html')
+
+def releve_compte_pdf_view(request):
+    # Add your logic for Relevé de compte (PDF) view here
+    return render(request, 'telercp.html')
+
+def releve_compte_text_view(request):
+    # Add your logic for Relevé de compte (text) view here
+    return render(request, 'telerct.html')
+
+def releve_compte_cfonb_view(request):
+    # Add your logic for Relevé de compte (CFONB) view here
+    return render(request, 'telercc.html')
+
+def echelle_interets_pdf_view(request):
+    # Add your logic for Echelle d'intérêts (PDF) view here
+    return render(request, 'teleeip.html')
+
+def echelle_interets_text_view(request):
+    # Add your logic for Echelle d'intérêts (text) view here
+    return render(request, 'teleeit.html')
+
+def image_cheques_view(request):
+    # Add your logic for Image des chèques view here
+    return render(request, 'teleic.html')
+
+def image_lettres_change_view(request):
+    # Add your logic for Image des lettres de change view here
+    return render(request, 'teleil.html')
+
+def situation_cartes_view(request):
+    # Add your logic for Situation des cartes view here
+    return render(request, 'telescard.html')
+
+def situation_credits_view(request):
+    # Add your logic for Situation des crédits view here
+    return render(request, 'telescred.html')
+
+def situation_placements_view(request):
+    # Add your logic for Situation des placements view here
+    return render(request, 'telesplac.html')
+
+def sort_cheques_verse_view(request):
+    # Add your logic for Sort des chèques versés view here
+    return render(request, 'telesorcheq.html')
+
+def transactions_tpe_view(request):
+    # Add your logic for Transactions TPE view here
+    return render(request, 'teletrantpe.html')
+
+def divers_view(request):
+    # Add your logic for Divers view here
+    return render(request, 'teled.html')
+def rediger_message_agence(request):
+    login_value = request.session.get('login')
+    user = utilisateur.objects.get(login=login_value)
+    if request.method == 'POST':
+        agence=request.POST.get('agence')
+        objet = request.POST.get('objet')
+        numtel=request.POST.get('numtel')
+        msg=request.POST.get('message')
+        u = utilisateur.objects.get(login=login_value)
+        m = Message_Agence(
+            login=u,
+            objet=objet,
+            numero_tel=numtel,
+            message=msg,
+            agence=agence,
+        )
+        m.save()
+
+        # Add a success message to be displayed on the redirected page
+        messages.success(request, 'Message envoyé.')
+
+        # Redirect to the same page after saving the data
+        return render(request,'mes.html',{'user': user,'messages':messages.get_messages(request)})
+    context={'user':user}
+    return render(request, 'mes.html',context)
+
+def rediger_message_support(request):
+    # Add your logic for Rediger un message au support view here
+    return render(request, 'messuppo.html')
+
+def messages_recus(request):
+    # Add your logic for Messages recus view here
+    return render(request, 'mesrec.html')
+
+def messages_envoyes(request):
+    # Add your logic for Messages envoyes view here
+    return render(request, 'mesenv.html')
+
+def messages_en_instance(request):
+    # Add your logic for Messages en instance view here
+    return render(request, 'mesins.html')
+
+def messages_supprimes(request):
+    # Add your logic for Messages supprimes view here
+    return render(request, 'messupp.html')

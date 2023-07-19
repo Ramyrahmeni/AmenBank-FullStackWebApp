@@ -1,0 +1,57 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+    <section class="content-section">
+      <div class="title">
+            <h1>Recharge carte prépayée</h1>
+          </div>
+          <form id="form_id">
+          <div class="tbl-content" style="margin-top: 20px;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tbody>
+                
+                <tr>
+                    <td data-label="Compte à créditer:">
+                        <h2>Liste des comptes:</h2>
+                        <select size="1" class="form-control">
+                          <option>Aucun</option>
+                          <option>000110123456</option>
+                          <option>000110123456</option>
+                        </select>
+                      </td>
+                <tr>
+                <tr>
+                    <td data-label="Montant:">
+                        <h2>Montant:</h2>
+                        <input type="number" min_value="0">
+                   </td>
+                </tr>
+                <tr>
+                    <td data-label="Numero de la carte:">
+                        <h2>Numero de la carte:</h2>
+                        <input type="number" min_value="0">
+                   </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="display: flex; justify-content: flex-start;">
+            <input type="submit" value="Valider">
+            <button type="reset">Reinitialiser</button>
+          </div>
+        </form>
+
+    </section>
+    <section class="options">
+      <ul>
+        <li><a href="{% url 'mon' %}">Consultation mouvements TPE</a></li>
+        <li><a href="{% url 'monrech' %}">Recharge carte prepayee</a></li>
+        <li><a href="{% url 'mondeb' %}">Deblocage carte internationale</a></li>
+        <li><a href="{% url 'monopp' %}">Opposition sur carte</a></li>
+            
+    </ul>
+    </section>
+  </div> 
+  {% endblock %}

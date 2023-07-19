@@ -1,0 +1,81 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section custom" >
+            <h1>Image des chèques
+            </h1>
+            <div style="display: flex; margin: 15px;padding: 10px;font-size: 20px;">
+                Vous n'avez aucun document à télécharger.
+            </div>
+        </section>
+  
+    </section>
+    <section class="options-virement">
+      <ul>
+        <li class="dropdown">
+          <a>Swift</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'tele' %}">OuvertureLC</a></li>
+            <li><a href="{% url 'telete' %}">Transfert emis - TRE</a></li>
+            <li><a href="{% url 'teletr' %}">Transfert recus - TRR</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a>Avis d'opération</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'teleaop' %}">Avis d'opération(PDF)</a></li>
+            <li><a href="{% url 'teleaot' %}">Avis d'opération(text)</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a>Situation des effets</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'telees' %}">Etat des sorts des effets</a></li>
+            <li><a href="{% url 'telecro' %}">CRO effet structuré</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a>Relevé de compte</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'telercp' %}">Relevé de compte(PDF)</a></li>
+            <li><a href="{% url 'telerct' %}">Relevé de compte(text)</a></li>
+            <li><a href="{% url 'telercc' %}">Relevé de compte(CFONB)</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a>Echelle d'intérêts</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'teleeip' %}">Echelle d'intérêts(PDF)</a></li>
+            <li><a href="{% url 'teleeit' %}">Echelle d'intérêts(text)</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="{% url 'teleic' %}">Image des chèques </a>
+        </li>
+        <li>
+          <a href="{% url 'teleil' %}">Image des lettres de change</a>
+        </li>
+        <li>
+          <a href="{% url 'telescard' %}">Situation des cartes</a>
+        </li>
+        <li>
+          <a href="{% url 'telescred' %}">Situation des crédits</a>
+        </li>
+        <li>
+          <a href="{% url 'telesplac' %}">Situation des placements</a>
+        </li>
+        <li>
+          <a href="{% url 'telesorcheq' %}">Sort des chèques versés</a>
+        </li>
+        <li>
+          <a href="{% url 'teletrantpe' %}">Transactions TPE</a>
+        </li>
+        <li>
+          <a href="{% url 'teled' %}">Divers</a>
+        </li>
+      </ul>
+    </section>
+  </div>
+  {% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+    <section class="content-section">
+      <div class="title">
+            <h1>Consultation des mouvements TPE</h1>
+          </div>
+          <form id="form_id">
+          <div class="tbl-content" style="margin-top: 20px;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tbody>
+                
+                <tr>
+                  <td data-label="Affiliation">
+                    <h2>Affiliation</h2>
+                    <select class="form-control">
+                      <option>Aucun</option>
+                    </select>
+                    
+                  </td>
+                </tr>
+                <tr>
+                  <td data-label="Terminal">
+                    <h2>Terminal</h2>
+                    <select class="form-control">
+                      <option>tous</option>
+                    </select>
+                    
+                  </td>
+                </tr>
+                  <tr>
+                    <td data-label="Date du:">
+                        <h2>Date du:</h2>
+                        <input type="date" min_value="0">
+                   </td>
+                </tr>
+                <tr>
+                  <td data-label="Au:">
+                      <h2>Au:</h2>
+                      <input type="date" min_value="0">
+                 </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="display: flex; justify-content: flex-start;">
+            <input type="submit" value="Valider">
+            <button type="reset">Reinitialiser</button>
+          </div>
+          </form>
+    </section>
+    <section class="options">
+      <ul>
+        <li><a href="{% url 'mon' %}">Consultation mouvements TPE</a></li>
+        <li><a href="{% url 'monrech' %}">Recharge carte prepayee</a></li>
+        <li><a href="{% url 'mondeb' %}">Deblocage carte internationale</a></li>
+        <li><a href="{% url 'monopp' %}">Opposition sur carte</a></li>
+            
+    </ul>
+    </section>
+  </div> 
+{% endblock %}
