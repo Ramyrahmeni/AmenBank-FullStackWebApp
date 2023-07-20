@@ -1,0 +1,21 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section">
+            <h1>Liste des demanades de credit</h1>
+            <div style="display: flex; margin: 15px;padding: 10px;font-size: 20px;">
+                Vous n'avez aucune demande de crédit.
+            </div>
+            <div style="display: flex; justify-content: flex-start;">
+                <input type="submit" value="Nouvelle demande de credit">
+              </div>
+      </section>
+      <section class="options">
+        <ul>
+              <li><a href="{% url 'fin' %}">Demande de credit</a></li>
+              <li><a href="{% url 'finsc' %}">Simulation credit</a></li>
+        </ul>
+      </section>
+    {% endblock %}

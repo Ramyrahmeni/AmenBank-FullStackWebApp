@@ -1,0 +1,60 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section">
+            <div class="title">
+                  <h1>Messages recus</h1>
+                </div>
+                <div class="tbl-header">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <thead>
+                      <tr>
+                        <th>Numero de compte</th>
+                        <th>Objet</th>
+                        <th>Date de message</th>
+                        <th>Details</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+                <div class="tbl-content">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      
+                      <tr>
+                        <td data-label="Numero de compte">000110123456</td>
+                        <td data-label="Objet">ANALYSE MATINALE DU MARCHE (PDF) : Veuillez consulter la rubrique téléchargement</td>
+                        <td data-label="Date de message">15/08/2015</td>
+                        <td data-label="Details">Details</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+          </section>
+  
+    <section class="options-virement">
+        <ul>
+          <li>
+            <a href="mes.html">Rediger un message a l'agence</a>
+          </li>
+          <li class="dropdown">
+            <a href="messuppo.html">Rediger un message au support</a>
+        </li>
+        <li class="dropdown">
+            <a href="mesrec.html">Messages recus</a>
+        </li>
+
+        <li class="dropdown">
+            <a href="mesenv.html">Messages envoyes</a>
+        </li> 
+        <li class="dropdown">
+            <a href="mesins.html">Messages en instance</a>
+        </li>  
+        <li class="dropdown">
+            <a href="messupp.html">Messages supprimes</a>
+        </li>    
+    </ul>
+      </section>
+      {% endblock %}

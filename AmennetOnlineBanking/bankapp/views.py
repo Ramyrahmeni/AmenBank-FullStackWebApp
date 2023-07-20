@@ -241,12 +241,30 @@ def mvmparop_view(request):
     if request.method == 'POST':
         account_number = request.POST.get('account_number')
         display_option = request.POST.get('display_options')
-        print(display_option)
+        acc=Compte.objects.filter(num_compte=account_number)
+        acc=acc[0]
+        print(acc)
+        solde=acc.solde
         # Retrieve movements for the selected accounts
         movements = MouvementBancaire.objects.filter(compte__num_compte=account_number).order_by('date')
         # Prepare data for the chart
+        moves=[]
+        for i in movements:
+            montant=float(i.montant)
+            type=i.type
+            if(type=='debit' or type=='Débit'):
+                moves.append(-1*montant)
+            else:
+                moves.append(montant)
+        data=[]
+        print(solde)
+        print(moves)
+        data.append(solde)
+        reversed_moves = moves[::-1]
+        for i in range(len(moves)-1):
+            data.insert(0,solde-reversed_moves[i])
+            solde-=reversed_moves[i]
         labels = [movement.date.strftime('%Y-%m-%d') for movement in movements]
-        data = [float(movement.montant) for movement in movements]
         print(labels)
         print(data)
         chart_data = {'labels': labels, 'data': data}
@@ -610,16 +628,49 @@ def rediger_message_agence(request):
     return render(request, 'mes.html',context)
 
 def rediger_message_support(request):
+    login_value = request.session.get('login')
+    user = utilisateur.objects.get(login=login_value)
     # Add your logic for Rediger un message au support view here
-    return render(request, 'messuppo.html')
+    if request.method == 'POST':
+        numtel = request.POST.get('numtel')
+        numfax = request.POST.get('numfax')
+        sysex = request.POST.get('sysex')
+        srvpak = request.POST.get('srvpak')
+        navigateur = request.POST.get('navigateur')
+        frnsaccess = request.POST.get('frnsaccess')
+        communication = request.POST.get('communication')
+        meserr = request.POST.get('meserr')
 
+            # Save the form data to the Message_Support model
+        m = Message_Support(
+                login=user,
+                numero_tel=numtel,
+                numero_fax=numfax,
+                system_exploitation=sysex,
+                service_pack=srvpak,
+                navigateur=navigateur,
+                fournisseur_internet=frnsaccess,
+                communication=communication,
+                message_erreur=meserr,
+            )
+        m.save()
+            # Add a success message to be displayed on the redirected page
+        messages.success(request, 'Message envoyé au support.')
+            # Redirect to the same page after saving the data
+        return render(request,'messuppo.html',{'user': user,'messages':messages.get_messages(request)})
+    context={'user':user}
+    return render(request, 'messuppo.html',context)
 def messages_recus(request):
     # Add your logic for Messages recus view here
     return render(request, 'mesrec.html')
 
 def messages_envoyes(request):
+    login_value = request.session.get('login')
+    messagence = Message_Agence.objects.filter(login__login=login_value)
+    messupport=Message_Support.objects.filter(login__login=login_value)
+    context={'messages_agences':messagence,'messages_support':messupport}
     # Add your logic for Messages envoyes view here
-    return render(request, 'mesenv.html')
+    return render(request, 'mesenv.html',context)
 
 def messages_en_instance(request):
     # Add your logic for Messages en instance view here
@@ -628,3 +679,50 @@ def messages_en_instance(request):
 def messages_supprimes(request):
     # Add your logic for Messages supprimes view here
     return render(request, 'messupp.html')
+def fin(request):
+    return render(request,'fin.html')
+def cd(request):
+    return render(request,'cd.html')
+def finsc(request):
+    return render(request,'finsc.html')
+def cbam(request):
+    return render(request,'cbam.html')
+def cs(request):
+    return render(request,'cs.html')
+def cb(request):
+    return render(request,'cb.html')
+def gb(request):
+    return render(request,'gb.html')
+def gbc(request):
+    return render(request,'gbc.html')
+def gbdr(request):
+    return render(request,'gbdr.html')
+def gbed(request):
+    return render(request,'gbed.html')
+def services_view(request):
+    # Your view logic here...
+    return render(request, 'services.html')
+
+def spi_view(request):
+    # Your view logic here...
+    return render(request, 'spi.html')
+
+def sst_view(request):
+    # Your view logic here...
+    return render(request, 'sst.html')
+
+def scch_view(request):
+    # Your view logic here...
+    return render(request, 'scch.html')
+
+def sdc_view(request):
+    # Your view logic here...
+    return render(request, 'sdc.html')
+
+def sdml_view(request):
+    # Your view logic here...
+    return render(request, 'sdml.html')
+
+def sdd_view(request):
+    # Your view logic here...
+    return render(request, 'sdd.html')

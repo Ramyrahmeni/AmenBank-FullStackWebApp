@@ -1,0 +1,35 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section custom" >
+            <h1>Messages supprimés</h1>
+            <div style="display: flex; margin: 15px;padding: 10px;font-size: 20px;">
+                Vous n'avez aucun message dans le dossier corbeille.
+            </div>
+        </section>
+  
+        <section class="options-virement">
+          <ul>
+            <li>
+              <a href="{% url 'mes' %}">Rediger un message a l'agence</a>
+          </li>
+          <li class="dropdown">
+              <a href="{% url 'messuppo' %}">Rediger un message au support</a>
+          </li>
+          <li class="dropdown">
+              <a href="{% url 'mesrec' %}">Messages recus</a>
+          </li>
+          <li class="dropdown">
+              <a href="{% url 'mesenv' %}">Messages envoyes</a>
+          </li>
+          <li class="dropdown">
+              <a href="{% url 'mesins' %}">Messages en instance</a>
+          </li>
+          <li class="dropdown">
+              <a href="{% url 'messupp' %}">Messages supprimes</a>
+          </li>
+      </ul>
+        </section>
+  {% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section">
+            <h1>Depenses et revenus
+            </h1>
+            <div style="display: flex; margin: 15px;padding: 10px;font-size: 20px;">
+                Aucun de vos comptes ne correspond au type de compte autorisé dans le module gestion de budget.
+            </div>
+      </section>
+    <section class="options-virement">
+      <ul>
+        <li><a href="{% url 'gb' %}">Paramétrage</a></li>
+        <li><a href="{% url 'gbc' %}">Gestion des catégories</a></li>
+        <li><a href="{% url 'gbdr' %}">Dépenses et revenus </a></li>
+        <li><a href="{% url 'gbed' %}">Etat des dépenses</a></li>
+  </ul>
+    </section>
+{% endblock %}

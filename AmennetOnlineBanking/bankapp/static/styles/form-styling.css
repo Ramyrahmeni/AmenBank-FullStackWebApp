@@ -156,6 +156,21 @@ body {
   height: 100%;
 }
 
+.echelle {
+  background-color: transparent;
+  color: #00813a;
+  padding: 10px 20px;
+  margin-right: 10px;
+  margin-top: 20px;
+  border: 1px solid #00813a;
+  border-radius: 3px;
+}
+.echelle:hover {
+  background-color: #00813a;
+  color: var(--color-info-light);
+  cursor: pointer;
+}
+
 h2, h3, h4, h5, h6 {
   margin-bottom: 0.5rem;
   font-family: inherit;
@@ -365,7 +380,7 @@ aside .close {
   color: var(--color-info-light);
   cursor: pointer;
 }
-.content-section input[type=submit], .content-section button[type=reset] {
+.content-section input[type=submit], .content-section button {
   background-color: transparent;
   color: #00813a;
   padding: 10px 20px;
@@ -374,7 +389,7 @@ aside .close {
   border: 1px solid #00813a;
   border-radius: 3px;
 }
-.content-section input[type=submit]:hover, .content-section button[type=reset]:hover {
+.content-section input[type=submit]:hover, .content-section button:hover {
   background-color: #00813a;
   color: var(--color-info-light);
   cursor: pointer;

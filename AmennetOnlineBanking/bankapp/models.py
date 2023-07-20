@@ -98,6 +98,7 @@ class Message_Agence(models.Model):
 class Message_Support(models.Model):
     login = models.ForeignKey(utilisateur, on_delete=models.CASCADE, to_field='login')
     numero_tel=models.IntegerField()
+    numero_fax=models.IntegerField(default="000")
     message_erreur=models.TextField()
     system_exploitation=models.CharField(max_length=100)
     service_pack=models.CharField(max_length=100)

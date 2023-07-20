@@ -1,0 +1,129 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section">
+            <h1>Simulation credit</h1>
+            <form id="form_id">
+                <div class="tbl-content" style="margin-top: 20px;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      <tr>
+                        <td data-label="Nature du crédit:">
+                          <h2>Nature du crédit:</h2>
+                          <select class="form-control" style="width: 200px;">
+                            <option>AUTOINVEST</option>
+                            <option>CREDIM</option>
+                            <option>PRESALAIRE</option>
+                        </select>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td data-label="Montant du crédit:">
+                          <h2>Montant du crédit:</h2>
+                          <div style="display: flex; justify-content: center;column-gap: 20px;align-items: center;">
+                            <input type="Number" id="mc">
+                            <p>Dinars</p>
+                          </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Durée de remboursement:">
+                          <h2>Durée de remboursement:</h2>
+                          <div style="display: flex; justify-content: center;column-gap: 20px;align-items: center;">
+                          <input type="Number" id="db">
+                          <p>ans</p>
+                        </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Revenu mensuel Brut:">
+                          <h2>Revenu mensuel Brut:</h2>
+                          <div style="display: flex; justify-content: center;column-gap: 20px;align-items: center;">
+                            <input type="Number" id="rm">
+                            <p>Dinars</p>
+                          </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Vous paierez par mois:">
+                          <h2>Vous paierez par mois:</h2>
+                          <div style="display: flex; justify-content: center;column-gap: 20px;align-items: center;">
+                            <p id="montantparmois"></p>
+                            <p>Dinars</p>
+                          </div>
+                        </td>
+                      </tr>
+                    <tr>
+                        <td>
+                          <h3 style="font-weight: 700;">Calcul de votre capacité d'emprunter<br> (40% de votre salaire brut) </h3>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Montant maximum du crédit:">
+                          <h2>Montant maximum du crédit:</h2>
+                          <div style="display: flex; justify-content: center;column-gap: 20px;align-items: center;">
+                            <p id="montantmax"></p>
+                            <p>Dinars</p>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td data-label="Mensualité:">
+                          <h2>Mensualité:</h2>
+                          <div style="display: flex; justify-content: center;column-gap: 20px;align-items: center;">
+                            <p id="mensualite"></p>
+                            <p>Dinars</p>
+                          </div>
+                        </td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+                <div style="display: flex; justify-content: flex-start;">
+                  <input type="submit" value="Simuler">
+                  <button type="reset">Reinitialiser</button>
+                </form>
+      </section>
+    <section class="options">
+      <ul>
+            <li><a href="{% url 'fin' %}">Demande de credit</a></li>
+            <li><a href="{% url 'finsc' %}">Simulation credit</a></li>
+      </ul>
+    </section>
+    <script>
+        // Sélection des éléments du formulaire
+        form=document.getElementById('form_id')
+const montantCreditInput = document.getElementById('mc');
+const dureeRemboursementInput = document.getElementById('db');
+const revenuMensuelInput = document.getElementById('rm');
+const montantparmois = document.getElementById('montantparmois');
+const montantMaxOutput = document.getElementById('montantmax');
+const mensualiteOutput = document.getElementById('mensualite');
+console.log(form)
+// Écouteur d'événement pour la soumission du formulaire
+form.addEventListener('submit', function(event) {
+  event.preventDefault(); // Empêche le rechargement de la page
+
+  // Récupération des valeurs saisies dans le formulaire
+  const montantCredit = parseFloat(montantCreditInput.value);
+  const dureeRemboursement = parseInt(dureeRemboursementInput.value);
+  const revenuMensuel = parseFloat(revenuMensuelInput.value);
+
+  // Calcul de la mensualité
+  const dureeRemboursementMois = dureeRemboursement * 12;
+  const mensualite = montantCredit / dureeRemboursementMois;
+  // Calcul du montant maximum du crédit (40% du revenu mensuel)
+  const montantMaximumCredit = revenuMensuel * 0.4;
+
+  // Affichage des résultats
+  console.log(montantMaximumCredit)
+  montantMaxOutput.textContent = montantMaximumCredit.toFixed(2);
+  mensualiteOutput.textContent = montantMaximumCredit.toFixed(2);
+  montantparmois.textContent = mensualite.toFixed(2);
+});
+
+    </script>
+  {% endblock %}

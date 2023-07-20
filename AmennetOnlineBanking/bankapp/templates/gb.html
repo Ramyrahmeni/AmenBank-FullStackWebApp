@@ -1,0 +1,45 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section">
+            <div class="title">
+                  <h1>Paramétrage de la période d'analyse</h1>
+            </div>
+                <form id="form_id">
+                <div class="tbl-content" style="margin-top: 20px;">
+                  <table cellpadding="0" cellspacing="0" border="0">
+                    <tbody>
+                      <tr>
+                        <td data-label="Numero de compte">
+                          <h2>Choix de la période d'analyse des dépenses:
+                        </h2>
+                          <select name="numCompte" id="numCompte" class="form-control">
+                            <option value="1">1 mois</option>
+                            <option value="2">2 mois</option>
+                            <option value="1">3 mois</option>
+                            <option value="2">4 mois</option>
+                            <option value="1">5 mois</option>
+                            <option value="2">6 mois</option>
+                            <option value="1">1 an</option>
+                        </select>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div style="display: flex; justify-content: flex-start;">
+                  <input type="submit" value="Continuer">
+                </div>
+                </form>
+          </section>
+    <section class="options-virement">
+      <ul>
+            <li><a href="{% url 'gb' %}">Paramétrage</a></li>
+            <li><a href="{% url 'gbc' %}">Gestion des catégories</a></li>
+            <li><a href="{% url 'gbdr' %}">Dépenses et revenus </a></li>
+            <li><a href="{% url 'gbed' %}">Etat des dépenses</a></li>
+      </ul>
+    </section>
+    {% endblock %}

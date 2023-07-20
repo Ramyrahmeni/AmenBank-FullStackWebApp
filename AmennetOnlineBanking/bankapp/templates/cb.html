@@ -1,0 +1,122 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+    <section class="content-section">
+        <h2>Cours de SICAV</h2>
+
+        <table style="  margin-top: 20px;">
+          <thead class="courshead">
+            <tr>
+              <th>Type SICAV</th>
+              <th>Date SICAV</th>
+              <th>Valeur SICAV</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SICAV AMEN</td>
+              <td>09/09/2016</td>
+              <td>39,711</td>
+            </tr>
+            <tr>
+              <td>TUNISIE SICAV</td>
+              <td>09/09/2016</td>
+              <td>162,498</td>
+            </tr>
+            <tr>
+              <td>SICAV ENTREPRISE</td>
+              <td>09/09/2016</td>
+              <td>103,993</td>
+            </tr>
+            <tr>
+              <td>FIDELITY OBLIG SICAV</td>
+              <td>09/09/2016</td>
+              <td>103,960</td>
+            </tr>
+            <tr>
+              <td>AMEN PREMIERE</td>
+              <td>09/09/2016</td>
+              <td>102,415</td>
+            </tr>
+          </tbody>
+        </table>
+    
+        <canvas id="stockChart" width="400" height="300"></canvas>
+    </section>
+    <section class="options-virement">
+        <ul>
+          <li class="dropdown">
+            <a>Change</a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'cd' %}">Cours des devises</a></li>
+              <li><a href="{% url 'cbam' %}">Analyse de marche</a></li>            </ul>
+          </li>
+          <li class="dropdown">
+            <a>Bourse</a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'cs' %}">Cours des SICAV</a></li>
+                <li><a href="{% url 'cb' %}">Cours de bourse</a></li>          
+              </ul></li>
+        </ul>
+      </section>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+
+      <script>
+        // Stock data for the curve
+        const stockData = [
+          { etr: "SICAV AMEN", price: 39711 },
+          { etr: "TUNISIE SICAV", price: 162498 },
+          { etr: "SICAV ENTREPRISE", price: 103993 },
+          { etr: "FIDELITY OBLIG SICAV", price: 103960 },
+          { etr: "AMEN PREMIERE", price: 102415 },
+        ];
+      console.log(stockData)
+        // Get the canvas element
+        const canvas = document.getElementById("stockChart");
+      
+        // Prepare data for Chart.js
+        const labels = stockData.map((data) => data.etr);
+        const prices = stockData.map((data) => data.price);
+      
+        // Create the chart
+        new Chart(canvas, {
+          type: "line",
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "Valeur SICAV",
+                data: prices,
+                borderColor: "blue",
+                fill: false,
+              },
+            ],
+          },
+          options: {
+            scales: {
+              x: {
+                type: "category", // Treat labels as categorical values
+                display: true,
+                title: {
+                  display: true,
+                  text: "Date SICAV",
+                },
+                ticks: {
+        maxRotation: 90, // Increase the rotation angle
+        minRotation: 90
+      }
+              },
+              y: {
+                display: true,
+                title: {
+                  display: true,
+                  text: "Valeur SICAV",
+                },
+              },
+            },
+          },
+        });
+      </script>
+{% endblock %}

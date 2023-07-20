@@ -1,0 +1,308 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+      <section class="content-section">
+        <h2>Cours du devise</h2>
+        <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Description</th>
+                  <th>Unité</th>
+                  <th>Valeur d'achat</th>
+                  <th>Valeur de vente</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tbody>
+                <tr>
+                  <td data-label="Code">BHD</td>
+                  <td data-label="Description">BHD</td>
+                  <td data-label="Unité">1</td>
+                  <td data-label="Valeur d'achat">5,6900</td>
+                  <td data-label="Valeur de vente">5,8590</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">CAD</td>
+                  <td data-label="Description">DOLLAR CANADIEN</td>
+                  <td data-label="Unité">1</td>
+                  <td data-label="Valeur d'achat">1,6340</td>
+                  <td data-label="Valeur de vente">1,6900</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">DKK</td>
+                  <td data-label="Description">COURONNE DANOISE</td>
+                  <td data-label="Unité">100</td>
+                  <td data-label="Valeur d'achat">32,4220</td>
+                  <td data-label="Valeur de vente">33,4530</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">JPY</td>
+                  <td data-label="Description">YEN JAPONAIS</td>
+                  <td data-label="Unité">1000</td>
+                  <td data-label="Valeur d'achat">20,8390</td>
+                  <td data-label="Valeur de vente">21,4370</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">KWD</td>
+                  <td data-label="Description">KWD</td>
+                  <td data-label="Unité">1</td>
+                  <td data-label="Valeur d'achat">7,1450</td>
+                  <td data-label="Valeur de vente">7,3920</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">NOK</td>
+                  <td data-label="Description">COURONNE NORVEGIENNE</td>
+                  <td data-label="Unité">100</td>
+                  <td data-label="Valeur d'achat">26,0210</td>
+                  <td data-label="Valeur de vente">27,1050</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">QAR</td>
+                  <td data-label="Description">RYAL DE QUATAR</td>
+                  <td data-label="Unité">10</td>
+                  <td data-label="Valeur d'achat">5,9280</td>
+                  <td data-label="Valeur de vente">6,0900</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">SAR</td>
+                  <td data-label="Description">RYAL SAOUDIEN</td>
+                  <td data-label="Unité">10</td>
+                  <td data-label="Valeur d'achat">5,7070</td>
+                  <td data-label="Valeur de vente">5,9680</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">SEK</td>
+                  <td data-label="Description">COURONNE SUEDOISE</td>
+                  <td data-label="Unité">10</td>
+                  <td data-label="Valeur d'achat">2,5000</td>
+                  <td data-label="Valeur de vente">2,6110</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">CHF</td>
+                  <td data-label="Description">FRANC SUISSE</td>
+                  <td data-label="Unité">10</td>
+                  <td data-label="Valeur d'achat">21,8880</td>
+                  <td data-label="Valeur de vente">22,6930</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">AED</td>
+                  <td data-label="Description">AED</td>
+                  <td data-label="Unité">10</td>
+                  <td data-label="Valeur d'achat">5,8550</td>
+                  <td data-label="Valeur de vente">6,0360</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">GBP</td>
+                  <td data-label="Description">LIVRE STERLING</td>
+                  <td data-label="Unité">10</td>
+                  <td data-label="Valeur d'achat">2,8300</td>
+                  <td data-label="Valeur de vente">2,9460</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">USD</td>
+                  <td data-label="Description">DOLLAR US</td>
+                  <td data-label="Unité">1</td>
+                  <td data-label="Valeur d'achat">2,1690</td>
+                  <td data-label="Valeur de vente">2,2200</td>
+                </tr>
+                <tr>
+                  <td data-label="Code">EUR</td>
+                  <td data-label="Description">EURO</td>
+                  <td data-label="Unité">1</td>
+                  <td data-label="Valeur d'achat">2,4370</td>
+                  <td data-label="Valeur de vente">2,4880</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+        
+          <canvas id="currencyChart" width="400" height="300"></canvas>
+
+      </section>
+      
+      <section class="options-virement">
+        <ul>
+          <li class="dropdown">
+            <a>Change</a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url 'cd' %}">Cours des devises</a></li>
+              <li><a href="{% url 'cbam' %}">Analyse de marche</a></li>            </ul>
+          </li>
+          <li class="dropdown">
+            <a>Bourse</a>
+            <ul class="dropdown-menu">
+                <li><a href="{% url 'cs' %}">Cours des SICAV</a></li>
+                <li><a href="{% url 'cb' %}">Cours de bourse</a></li>          
+              </ul></li>
+        </ul>
+      </section>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@3.5.1"></script>
+
+
+
+      <script>
+const currencyData = [
+  {
+    code: "BHD",
+    description: "BHD",
+    unite: 1,
+    valeurAchat: 5.6900,
+    valeurVente: 5.8590
+  },
+  {
+    code: "CAD",
+    description: "DOLLAR CANADIEN",
+    unite: 1,
+    valeurAchat: 1.6340,
+    valeurVente: 1.6900
+  },
+  {
+    code: "DKK",
+    description: "COURONNE DANOISE",
+    unite: 100,
+    valeurAchat: 32.4220,
+    valeurVente: 33.4530
+  },
+  {
+    code: "JPY",
+    description: "YEN JAPONAIS",
+    unite: 1000,
+    valeurAchat: 20.8390,
+    valeurVente: 21.4370
+  },
+  {
+    code: "KWD",
+    description: "KWD",
+    unite: 1,
+    valeurAchat: 7.1450,
+    valeurVente: 7.3920
+  },
+  {
+    code: "NOK",
+    description: "COURONNE NORVEGIENNE",
+    unite: 100,
+    valeurAchat: 26.0210,
+    valeurVente: 27.1050
+  },
+  {
+    code: "QAR",
+    description: "RYAL DE QUATAR",
+    unite: 10,
+    valeurAchat: 5.9280,
+    valeurVente: 6.0900
+  },
+  {
+    code: "SAR",
+    description: "RYAL SAOUDIEN",
+    unite: 10,
+    valeurAchat: 5.7070,
+    valeurVente: 5.9680
+  },
+  {
+    code: "SEK",
+    description: "COURONNE SUEDOISE",
+    unite: 10,
+    valeurAchat: 2.5000,
+    valeurVente: 2.6110
+  },
+  {
+    code: "CHF",
+    description: "FRANC SUISSE",
+    unite: 10,
+    valeurAchat: 21.8880,
+    valeurVente: 22.6930
+  },
+  {
+    code: "AED",
+    description: "AED",
+    unite: 10,
+    valeurAchat: 5.8550,
+    valeurVente: 6.0360
+  },
+  {
+    code: "GBP",
+    description: "LIVRE STERLING",
+    unite: 10,
+    valeurAchat: 2.8300,
+    valeurVente: 2.9460
+  },
+  {
+    code: "USD",
+    description: "DOLLAR US",
+    unite: 1,
+    valeurAchat: 2.1690,
+    valeurVente: 2.2200
+  },
+  {
+    code: "EUR",
+    description: "EURO",
+    unite: 1,
+    valeurAchat: 2.4370,
+    valeurVente: 2.4880
+  },
+];
+
+const codes = currencyData.map(data => data.code);
+const valeurAchatValues = currencyData.map(data => data.valeurAchat);
+const valeurVenteValues = currencyData.map(data => data.valeurVente);
+
+// Get the canvas element
+const canvas = document.getElementById("currencyChart");
+
+// Create the chart
+new Chart(canvas, {
+  type: "bar",
+  data: {
+    labels: codes,
+    datasets: [
+      {
+        label: "Valeur d'achat",
+        data: valeurAchatValues,
+        backgroundColor: "rgba(75, 192, 192, 0.6)",
+        borderColor: "rgba(75, 192, 192, 1)",
+        borderWidth: 1
+      },
+      {
+        label: "Valeur de vente",
+        data: valeurVenteValues,
+        backgroundColor: "rgba(192, 75, 75, 0.6)",
+        borderColor: "rgba(192, 75, 75, 1)",
+        borderWidth: 1
+      }
+    ]
+  },
+  options: {
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: "Currency Code"
+        },
+        ticks: {
+        maxRotation: 90, // Increase the rotation angle
+        minRotation: 90
+      }
+      },
+      y: {
+        title: {
+          display: true,
+          text: "Value"
+        },
+        suggestedMin: Math.min(...valeurAchatValues, ...valeurVenteValues) - 1,
+        suggestedMax: Math.max(...valeurAchatValues, ...valeurVenteValues) + 1,
+        beginAtZero: true
+      }
+    }
+  }
+});
+
+      </script>
+{% endblock %}

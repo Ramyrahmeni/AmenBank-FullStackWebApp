@@ -1,0 +1,41 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section">
+                <h1>Liste des demandes de main levée
+                </h1>
+                <div style="display: flex; margin: 15px;padding: 10px;font-size: 20px;">
+                    Vous n'avez aucun demande de main levée.
+                </div>
+                <div style="display: flex; justify-content: flex-start;">
+                  <button class="np">Nouvelle demande de main levée</button>
+                </div>
+          </section>
+          <section class="options-virement">
+            <ul>
+              <li class="dropdown">
+                <a>Promotion immobiliere</a>
+                <ul class="dropdown-menu">
+                  <li><a href="{% url 'services' %}">Fiche Promoteur</a></li>
+                  <li><a href="{% url 'spi' %}">Projets immobilière</a></li>
+                  <li><a href="{% url 'sst' %}">Stock de terrain</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="{% url 'scch' %}">Commande de chequier</a>
+              </li>
+              <li>
+                <a href="{% url 'sdc' %}">Demande de carte</a>
+              </li>
+              <li>
+                <a href="{% url 'sdml' %}">Demande de main levee</a>
+              </li>
+              <li>
+                <a href="{% url 'sdd' %}">Demande de document</a>
+              </li>
+              
+            </ul>
+          </section>
+{% endblock %}
