@@ -726,3 +726,26 @@ def sdml_view(request):
 def sdd_view(request):
     # Your view logic here...
     return render(request, 'sdd.html')
+def ordre_virement_view(request):
+    # Your view logic here...
+    return render(request, 'etr.html')
+
+def transfert_emis_signer_view(request):
+    # Your view logic here...
+    return render(request, 'etrsin.html')
+
+def historique_transferts_emis_view(request):
+    # Your view logic here...
+    return render(request, 'etrhis.html')
+
+def ouverture_lettre_credit_view(request):
+    # Your view logic here...
+    return render(request, 'etrcrd.html')
+
+def lettres_credit_signer_view(request):
+    # Your view logic here...
+    return render(request, 'etrcrdsin.html')
+
+def historique_lettres_credit_view(request):
+    # Your view logic here...
+    return render(request, 'etrcrdhis.html')

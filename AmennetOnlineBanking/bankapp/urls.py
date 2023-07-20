@@ -81,4 +81,10 @@ urlpatterns = [
     path('sdc/', views.sdc_view, name='sdc'),
     path('sdml/', views.sdml_view, name='sdml'),
     path('sdd/', views.sdd_view, name='sdd'),
+    path('etr/', views.ordre_virement_view, name='etr'),
+    path('etrsin/', views.transfert_emis_signer_view, name='etrsin'),
+    path('etrhis/', views.historique_transferts_emis_view, name='etrhis'),
+    path('etrcrd/', views.ouverture_lettre_credit_view, name='etrcrd'),
+    path('etrcrdsin/', views.lettres_credit_signer_view, name='etrcrdsin'),
+    path('etrcrdhis/', views.historique_lettres_credit_view, name='etrcrdhis'),
 ]

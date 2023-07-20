@@ -1,0 +1,744 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+    <section class="content-section custom" >
+      <div class="title">
+            <h1>Lettre de credit</h1>
+          </div>
+          <form id="form_id">
+          <div class="tbl-content tbl-rech" style="margin-top: 1rem;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tbody>
+                <tr>
+                    <td data-label="Type credit:">
+                      <h2>Type credit:</h2>
+                        <select size="1" class="form-control">
+                          <option>Financier</option>
+                          <option>Commercial</option>
+                        </select>
+                      </td>
+                </tr>
+                <tr>
+                    <td><h3 style="font-weight: 700;font-size: 20px; float:left">Information Compte:</h3></td>
+                </tr>
+                <tr>
+                    <td data-label="Compte à débiter:">
+                        <h2>Compte principal:(<span style="color: red;">*</span>)</h2>
+                        <select size="1" class="form-control" placeholder="Selectionner un compte">
+                          <option>000110123456</option>
+                          <option>000110123456</option>
+                        </select>
+                      </td>
+                </tr>
+                <tr>
+                    <td data-label="Taux de blocage proposé:">
+                        <h2>Taux de blocage proposé:</h2>
+                        <input type="number" min_value="0">
+                   </td>
+                </tr>
+                <tr>
+                    <td data-label="Compte professionel:">
+                        <h2>Compte professionel:</h2>
+                        <select size="1" class="form-control" placeholder="Selectionner un compte">
+                          <option>000110123456</option>
+                          <option>000110123456</option>
+                        </select>
+                      </td>
+                </tr>
+                <tr>
+                    <td data-label="Taux de blocage proposé:">
+                        <h2>Taux de blocage proposé:</h2>
+                        <input type="number" min_value="0">
+                   </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div style="display: flex; justify-content: center; column-gap: 10px; margin-top: 10px;"><input type="Radio" name="choice"><p> Autorisation banque centrale</p></div>
+                        <div style="display: flex; justify-content: center; column-gap: 10px; margin-top: 10px;"><input type="Radio" name="choice"><p>Fiche information</p></div>
+                   </td>
+                </tr>
+                    <tr>
+                        <td data-label="Montant:">
+                            <h2>Montant:(<span style="color: red;">*</span>)</h2>
+                            <input type="number" min_value="0" id="montant" oninput="convertToTND(this.value)">
+                       </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Devise">
+                          <h2>Devise:(<span style="color: red;">*</span>)</h2>
+                          <select name="devise1" size="1" class="form-control">
+                            <option value="AED">AED</option>
+                            <option value="CAD">CAD</option>
+                            <option value="CHF">CHF</option>
+                            <option value="DKK">DKK</option>
+                            <option value="EUR">EUR</option>
+                            <option value="GBP">GBP</option>
+                            <option value="JPY">JPY</option>
+                            <option value="KWD">KWD</option>
+                            <option value="MAD">MAD</option>
+                            <option value="NOK">NOK</option>
+                            <option value="QAR">QAR</option>
+                            <option value="SAR">SAR</option>
+                            <option value="SEK">SEK</option>
+                            <option value="USD">USD</option>
+                          </select>
+                          
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Contre valeur en TND:">
+                            <h2>Contre valeur en TND:</h2>
+                            <p id="tndval" style="font-size: 20px;"></p>
+                       </td>
+                    </tr>
+                    <tr>
+                        <td data-label="Taux de blocage proposé:">
+                            <h2>Montant supplimentaire:</h2>
+                            <input type="number" min_value="0">
+                       </td>
+                    </tr>
+                <tr>
+                    <td><h3 style="font-weight: 700;font-size: 20px; float:left">Béneficiaire:</h3></td>
+                </tr>
+                <tr>
+                    <td data-label="Nom Béneficiaire:">
+                        <h2>Nom Béneficiaire:(<span style="color: red;">*</span>)</h2>
+                        <input type="text">
+                   </td>
+                </tr>
+                <tr>
+                    <td data-label="Adresse:">
+                        <h2>Adresse:(<span style="color: red;">*</span>)</h2>
+                        <input type="text">
+                   </td>
+                </tr>
+                <tr>
+                    <td data-label="Ville:">
+                        <h2>Ville:(<span style="color: red;">*</span>)</h2>
+                        <input type="text">
+                   </td>
+                </tr>
+                <tr>
+                    <td data-label="Code Postal:">
+                        <h2>Code Postal:</h2>
+                        <input type="number" min_value="0">
+                   </td>
+                </tr>
+                <tr>
+                    <td data-label="Pays">
+                        <h2>Pays</h2>
+                        <select name="country" size="1" class="form-control" id="country" style="width:00px" aria-placeholder="Selectionner in pays">
+                            <option value="Selectionner un Pays">Selectionner un Pays</option>
+                            <option value="Tunisie">Tunisie</option>
+                            <option value="ZA">Afrique du Sud</option>
+                            <option value="AL">Albanie</option>
+                            <option value="DZ">Algérie</option>
+                            <option value="DE">Allemagne</option>
+                            <option value="SA">Arabie Saoudite</option>
+                            <option value="AR">Argentine</option>
+                            <option value="AU">Australie</option>
+                            <option value="AT">Autriche</option>
+                            <option value="BH">Bahreïn</option>
+                            <option value="BE">Belgique</option>
+                            <option value="BY">Biélo-Russie</option>
+                            <option value="BO">Bolivie</option>
+                            <option value="BA">Bosnie-Herzégovine</option>
+                            <option value="BR">Brésil</option>
+                            <option value="BG">Bulgarie</option>
+                            <option value="CA">Canada</option>
+                            <option value="CL">Chili</option>
+                            <option value="CN">Chine</option>
+                            <option value="CY">Chypre</option>
+                            <option value="CO">Colombie</option>
+                            <option value="KR">Corée du Sud</option>
+                            <option value="CR">Costa Rica</option>
+                            <option value="HR">Croatie</option>
+                            <option value="DK">Danemark</option>
+                            <option value="EG">Egypte</option>
+                            <option value="SV">El Salvador</option>
+                            <option value="AE">Emirats Arabes Unis</option>
+                            <option value="EC">Equateur</option>
+                            <option value="ES">Espagne</option>
+                            <option value="EE">Estonie</option>
+                            <option value="US">Etats-Unis</option>
+                            <option value="FI">Finlande</option>
+                            <option value="FR">France</option>
+                            <option value="GR">Grèce</option>
+                            <option value="GT">Guatemala</option>
+                            <option value="HN">Honduras</option>
+                            <option value="HK">Hong-Kong</option>
+                            <option value="HU">Hongrie</option>
+                            <option value="IN">Inde</option>
+                            <option value="ID">Indonésie</option>
+                            <option value="IQ">Irak</option>
+                            <option value="IE">Irlande</option>
+                            <option value="IS">Islande</option>
+                            <option value="IL">Israël</option>
+                            <option value="IT">Italie</option>
+                            <option value="JP">Japon</option>
+                            <option value="JO">Jordanie</option>
+                            <option value="KW">Koweit</option>
+                            <option value="LV">Lettonie</option>
+                            <option value="LB">Liban</option>
+                            <option value="LY">Libye</option>
+                            <option value="LT">Lithuanie</option>
+                            <option value="LU">Luxembourg</option>
+                            <option value="MK">Macédoine</option>
+                            <option value="MY">Malaisie</option>
+                            <option value="MT">Malte</option>
+                            <option value="MA">Maroc</option>
+                            <option value="MX">Mexique</option>
+                            <option value="ME">Monténégro</option>
+                            <option value="NI">Nicaragua</option>
+                            <option value="NO">Norvège</option>
+                            <option value="NZ">Nouvelle-Zélande</option>
+                            <option value="OM">Oman</option>
+                            <option value="PA">Panama</option>
+                            <option value="PY">Paraguay</option>
+                            <option value="NL">Pays-Bas</option>
+                            <option value="PE">Pérou</option>
+                            <option value="PH">Philippines</option>
+                            <option value="PL">Pologne</option>
+                            <option value="PR">Porto Rico</option>
+                            <option value="PT">Portugal</option>
+                            <option value="QA">Qatar</option>
+                            <option value="DO">République Dominicaine</option>
+                            <option value="CZ">République Tchèque</option>
+                            <option value="RO">Roumanie</option>
+                            <option value="GB">Royaume-Uni</option>
+                            <option value="RU">Russie</option>
+                            <option value="RS">Serbie</option>
+                            <option value="CS">Serbie et Monténégro</option>
+                            <option value="SG">Singapour</option>
+                            <option value="SK">Slovaquie</option>
+                            <option value="SI">Slovénie</option>
+                            <option value="SD">Soudan</option>
+                            <option value="SE">Suède</option>
+                            <option value="CH">Suisse</option>
+                            <option value="SY">Syrie</option>
+                            <option value="TW">Taiwan</option>
+                            <option value="TH">Thaïlande</option>
+                            <option value="TN">Tunisie</option>
+                            <option value="TR">Turquie</option>
+                            <option value="UA">Ukraine</option>
+                            <option value="UY">Uruguay</option>
+                            <option value="VE">Vénézuela</option>
+                            <option value="VN">Vietnam</option>
+                            <option value="YE">Yémen</option>
+                        </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><h3 style="font-weight: 700;font-size: 20px; float:left">Bancaire Béneficiaire</h3></td>
+                </tr>
+                <tr>
+                    <td data-label="Bank:">
+                        <h2>Banque:</h2>
+                        <input type="text">
+                   </td>
+                </tr>
+                <tr>
+                    <td data-label="Adresse Bank:">
+                        <h2>Adresse banque:</h2>
+                        <input type="text">
+                   </td>
+                </tr>
+                <tr>
+                    <td data-label="Ville:">
+                        <h2>Ville:</h2>
+                        <input type="text">
+                   </td>
+                </tr>
+                <tr>
+                    <td data-label="Code Postal:">
+                        <h2>Code Postal:</h2>
+                        <input type="number" min_value="0">
+                   </td>
+                </tr>
+                <tr>
+                    <td data-label="Pays">
+                        <h2>Pays:(<span style="color: red;">*</span>)</h2>
+                        <select name="country" size="1" class="form-control" id="country" style="width:200px">
+                            <option value="Selectionner un Pays">Selectionner un Pays</option>
+                            <option value="Tunisie">Tunisie</option>
+                            <option value="ZA">Afrique du Sud</option>
+                            <option value="AL">Albanie</option>
+                            <option value="DZ">Algérie</option>
+                            <option value="DE">Allemagne</option>
+                            <option value="SA">Arabie Saoudite</option>
+                            <option value="AR">Argentine</option>
+                            <option value="AU">Australie</option>
+                            <option value="AT">Autriche</option>
+                            <option value="BH">Bahreïn</option>
+                            <option value="BE">Belgique</option>
+                            <option value="BY">Biélo-Russie</option>
+                            <option value="BO">Bolivie</option>
+                            <option value="BA">Bosnie-Herzégovine</option>
+                            <option value="BR">Brésil</option>
+                            <option value="BG">Bulgarie</option>
+                            <option value="CA">Canada</option>
+                            <option value="CL">Chili</option>
+                            <option value="CN">Chine</option>
+                            <option value="CY">Chypre</option>
+                            <option value="CO">Colombie</option>
+                            <option value="KR">Corée du Sud</option>
+                            <option value="CR">Costa Rica</option>
+                            <option value="HR">Croatie</option>
+                            <option value="DK">Danemark</option>
+                            <option value="EG">Egypte</option>
+                            <option value="SV">El Salvador</option>
+                            <option value="AE">Emirats Arabes Unis</option>
+                            <option value="EC">Equateur</option>
+                            <option value="ES">Espagne</option>
+                            <option value="EE">Estonie</option>
+                            <option value="US">Etats-Unis</option>
+                            <option value="FI">Finlande</option>
+                            <option value="FR">France</option>
+                            <option value="GR">Grèce</option>
+                            <option value="GT">Guatemala</option>
+                            <option value="HN">Honduras</option>
+                            <option value="HK">Hong-Kong</option>
+                            <option value="HU">Hongrie</option>
+                            <option value="IN">Inde</option>
+                            <option value="ID">Indonésie</option>
+                            <option value="IQ">Irak</option>
+                            <option value="IE">Irlande</option>
+                            <option value="IS">Islande</option>
+                            <option value="IL">Israël</option>
+                            <option value="IT">Italie</option>
+                            <option value="JP">Japon</option>
+                            <option value="JO">Jordanie</option>
+                            <option value="KW">Koweit</option>
+                            <option value="LV">Lettonie</option>
+                            <option value="LB">Liban</option>
+                            <option value="LY">Libye</option>
+                            <option value="LT">Lithuanie</option>
+                            <option value="LU">Luxembourg</option>
+                            <option value="MK">Macédoine</option>
+                            <option value="MY">Malaisie</option>
+                            <option value="MT">Malte</option>
+                            <option value="MA">Maroc</option>
+                            <option value="MX">Mexique</option>
+                            <option value="ME">Monténégro</option>
+                            <option value="NI">Nicaragua</option>
+                            <option value="NO">Norvège</option>
+                            <option value="NZ">Nouvelle-Zélande</option>
+                            <option value="OM">Oman</option>
+                            <option value="PA">Panama</option>
+                            <option value="PY">Paraguay</option>
+                            <option value="NL">Pays-Bas</option>
+                            <option value="PE">Pérou</option>
+                            <option value="PH">Philippines</option>
+                            <option value="PL">Pologne</option>
+                            <option value="PR">Porto Rico</option>
+                            <option value="PT">Portugal</option>
+                            <option value="QA">Qatar</option>
+                            <option value="DO">République Dominicaine</option>
+                            <option value="CZ">République Tchèque</option>
+                            <option value="RO">Roumanie</option>
+                            <option value="GB">Royaume-Uni</option>
+                            <option value="RU">Russie</option>
+                            <option value="RS">Serbie</option>
+                            <option value="CS">Serbie et Monténégro</option>
+                            <option value="SG">Singapour</option>
+                            <option value="SK">Slovaquie</option>
+                            <option value="SI">Slovénie</option>
+                            <option value="SD">Soudan</option>
+                            <option value="SE">Suède</option>
+                            <option value="CH">Suisse</option>
+                            <option value="SY">Syrie</option>
+                            <option value="TW">Taiwan</option>
+                            <option value="TH">Thaïlande</option>
+                            <option value="TN">Tunisie</option>
+                            <option value="TR">Turquie</option>
+                            <option value="UA">Ukraine</option>
+                            <option value="UY">Uruguay</option>
+                            <option value="VE">Vénézuela</option>
+                            <option value="VN">Vietnam</option>
+                            <option value="YE">Yémen</option>
+                        </select>
+                    </td>
+                  </tr>
+                <tr>
+                    <td><h3 style="font-weight: 700;font-size: 20px; float:left">Expédition/Destination:</h3></td>
+                </tr>
+                <tr>
+                  <td data-label="Lieu expédition/Embarquement:">
+                      <h2>Lieu expédition/Embarquement:(<span style="color: red;">*</span>)</h2>
+                      <input type="text">
+                 </td>
+              </tr>
+                <tr>
+                  <td data-label="Destination:">
+                      <h2>Destination:(<span style="color: red;">*</span>)</h2>
+                      <input type="text">
+                 </td>
+              </tr>
+              <tr>
+                <td data-label="Lieu expédition/Embarquement:">
+                    <h2>Date limite expédition:(<span style="color: red;">*</span>)</h2>
+                    <input type="date">
+               </td>
+            </tr>
+            <tr>
+              <td data-label="Expéditions partielles:">
+                  <h2>Expéditions partielles:</h2>
+                  <select size="1" class="form-control" id="autorisation" style="width:200px"  onchange="toggleInput()">
+                      <option>Non Autorisee</option>
+                      <option>Autorisee</option>
+                    </select>
+              </td>
+            </tr>
+            <tr>
+              <td data-label="Nombre Expédition:">
+                  <h2>Nombre Expédition:(<span style="color: red;">*</span>)</h2>
+                  <input type="number" disabled id="exp">
+             </td>
+          </tr>
+          <tr>
+            <td data-label="Fractionné:">
+                <h2>Fractionné:</h2>
+                <div style="display: flex; column-gap: 20px; justify-content: center;">
+                <select size="1" class="form-control" id="autorisation1" style="width:200px"  onchange="toggleInput1()">
+                    <option>Non</option>
+                    <option>Oui</option>
+                  </select>
+                  <input type="text" disabled id="exp1">
+                </div>
+            </td>
+          </tr>
+        <tr>
+          <td data-label="Transbordement:">
+              <h2>Transbordement:</h2>
+              <select size="1" class="form-control" id="autorisation1" style="width:200px"  onchange="toggleInput1()">
+                <option>Non Autorisee</option>
+                <option>Autorisee</option>
+                </select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <h3 style="float: left;">Mode de livraison:(<span style="color: red;">*</span>)</h3>
+            <div style="display: flex; flex-direction: column;margin-top: 20px;">
+            <div style="display: flex; justify-content: center; margin-top: 15px;width: 70px;column-gap: 10px; ">
+            <div style="display: flex; column-gap: 4px; justify-content: center;">
+              <input type="radio" name="val" value="exw" onchange="toggleInput3()"> <p>EXW</p>
+            </div>
+            <div style="display: flex; column-gap: 4px; justify-content: center;">
+              <input type="radio" name="val" value="fob" onchange="toggleInput3()"> <p>FOB</p>
+            </div>
+            <div style="display: flex; column-gap: 4px; justify-content: center;">
+              <input type="radio" name="val" value="cfr" onchange="toggleInput3()"> <p>CFR</p>
+            </div>
+            <div style="display: flex; column-gap: 4px; justify-content: center;">
+              <input type="radio" name="val" value="autres" onchange="toggleInput3()"> <p>Autres</p>
+            </div>
+          </div>
+          <input type="text" placeholder="Autres types de livraison" style="width:70px;text-align: center; margin-top: 20px;" id="exp2" disabled>
+        </div>
+          </td>
+          
+      </tr>
+      <tr>
+        <td>
+          <h2>Période embarquement</h2>
+          <textarea placeholder="Période embarquement"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <h2>Nature biens/services:(<span style="color: red;">*</span>)</h2>
+          <textarea placeholder="Période embarquement"></textarea>
+        </td>
+      </tr>
+      <tr>
+        <td><h2 style="font-weight: 700;">Mode de paiement:(<span style="color: red;">*</span>)</h2></td>
+      </tr>
+      <tr>
+        <td>
+          <div style="display: flex; justify-content: center; column-gap: 55px;" ><input type="radio" name="val2"><p>Paiement a vue</p></div>
+          <div style="display: flex; justify-content: center; align-items: center;margin-top: 15px;column-gap: 20px;"> <input type="radio" name="val2" value="paiementdiff" onchange="toggleInput4()"><p>Paiement differe</p><p>à</p></div><div style="display: flex; align-items: center;margin-top: 15px;column-gap: 20px;justify-content: center;"><input type="number" disabled id="exp3j"><p>jour </p></div><div style="display: flex; justify-content:center; align-items: center;margin-top: 15px;column-gap: 20px;"><br><p>date</p><input type="date" disabled id="exp3d"></div>
+          <div style="display: flex; justify-content: center; align-items: center;margin-top: 15px;column-gap: 20px;"><input type="radio" name="val2" value="paiementaccept"onchange="toggleInput4()"><p>Acceptation d'une traite</p><p>à</p></div><div style="display: flex; justify-content: center; align-items: center;margin-top: 15px;column-gap: 20px;"><input type="number" disabled id="exp4j"><p>jour </p></div><div style="display: flex; justify-content: center; align-items: center;margin-top: 15px;column-gap: 20px;"><p>date</p><input type="date"disabled id="exp4d"></div>
+          <div style="display: flex;flex-direction: column; justify-content: center; align-items: center;margin-top: 15px;row-gap: 20px;"><div style="display: flex; justify-content: center; align-items: center;margin-top: 15px;column-gap: 20px;"> <input type="radio" name="val2" value="nego" onchange="toggleInput4()"><p>Négociation</p></div><textarea form="form_id" disabled id="exp5"></textarea></div>
+          <div style="display: flex;flex-direction: column; justify-content: center; align-items: center;margin-top: 15px;row-gap: 20px;"><div style="display: flex; justify-content: center; align-items: center;margin-top: 15px;column-gap: 20px;"><input type="radio" name="val2" value="paiementmix" onchange="toggleInput4()"><p>Paiement Mixte</p></div><textarea form="form_id" disabled id="exp6"></textarea></div>
+        </td>
+      </tr>
+      <tr><td>Documents exigés (<span style="color: red;">*</span>)</td></tr>
+      <tr>
+        <td>
+          <div class="tbl-header">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <thead>
+                <tr>
+                  <th data-label="Cocher">Cocher</th>
+                  <th data-label="Code">Code</th>
+                  <th data-label="Libelle">Libelle</th>
+                  <th data-label="Nombre de document">Nombre de document</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div class="tbl-content">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tbody>
+                <tr class="odd" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px;">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[0]" value="true"></td>
+                  <td data-label="Code">100</td>
+                  <td data-label="Libelle">FACTURE COMMERCIALE PORTANT CACHET ET SIGNATURE</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[0]" value="" class="form-control"></td>
+                </tr>
+                <tr class="even" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px; ">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[1]" value="true"></td>
+                  <td data-label="Code">110</td>
+                  <td data-label="Libelle">CONNAISSEMENT MARITIME CLEAN ON BOARD</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[1]" value="" class="form-control"></td>
+                </tr>
+                <tr class="odd" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px;">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[2]" value="true"></td>
+                  <td data-label="Code">150</td>
+                  <td data-label="Libelle">CERTIFICAT EUR1</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[2]" value="" class="form-control"></td>
+                </tr>
+                <tr class="even" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px; ">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[3]" value="true"></td>
+                  <td data-label="Code">160</td>
+                  <td data-label="Libelle">NOTE DE POIDS</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[3]" value="" class="form-control"></td>
+                </tr>
+                <tr class="odd" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px;">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[4]" value="true"></td>
+                  <td data-label="Code">170</td>
+                  <td data-label="Libelle">LISTE DE COLISAGE</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[4]" value="" class="form-control"></td>
+                </tr>
+                <tr class="even" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px; ">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[5]" value="true"></td>
+                  <td data-label="Code">190</td>
+                  <td data-label="Libelle">AUTRES A PRECISER</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[5]" value="" class="form-control"></td>
+                </tr>
+                <tr class="odd" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px;">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[6]" value="true"></td>
+                  <td data-label="Code">120</td>
+                  <td data-label="Libelle">LETTRE DE TRANSPORT AERIEN &quot; LTA &quot;</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[6]" value="" class="form-control"></td>
+                </tr>
+                <tr class="even" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px;">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[7]" value="true"></td>
+                  <td data-label="Code">130</td>
+                  <td data-label="Libelle">LETTRE DE VOITURE &quot; CMR &quot; / &quot; CIM &quot;</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[7]" value="" class="form-control"></td>
+                </tr>
+                <tr class="odd" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px; ">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[8]" value="true"></td>
+                  <td data-label="Code">180</td>
+                  <td data-label="Libelle">NOTE DE POIDS/LISTE DE COLISAGE</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[8]" value="" class="form-control"></td>
+                </tr>
+                <tr class="even" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px;">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[9]" value="true"></td>
+                  <td data-label="Code">210</td>
+                  <td data-label="Libelle">CERTIFICAT D ANALYSE</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[9]" value="" class="form-control"></td>
+                </tr>
+                <tr class="odd" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px;">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[10]" value="true"></td>
+                  <td data-label="Code">220</td>
+                  <td data-label="Libelle">CERTIFICAT PHYTO SANITAIRE</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[10]" value="" class="form-control"></td>
+                </tr>
+                <tr class="even" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px;">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[11]" value="true"></td>
+                  <td data-label="Code">200</td>
+                  <td data-label="Libelle">CERTIFICAT DE CONFORMITE</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[11]" value="" class="form-control"></td>
+                </tr>
+                <tr class="odd" style="color: rgba(0, 0, 0, 0.4); border-radius: 5px; ">
+                  <td data-label="Cocher"><input type="checkbox" name="docuumentsExiges.checked[12]" value="true"></td>
+                  <td data-label="Code">140</td>
+                  <td data-label="Libelle">CERTIFICAT D'ORIGINE</td>
+                  <td data-label="Nombre de document"><input type="text" name="docuumentsExiges.description[12]" value="" class="form-control"></td>
+                </tr>
+                <!-- Add more rows as needed -->
+              </tbody>
+            </table>
+          </div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <textarea form="form_id" placeholder="Documents Requis/Autres:"></textarea>
+         </td>
+      </tr>
+      <tr>
+        <td><p>Documents à présenter dans les </p><input type="number"><p>  jours de la date<br> d'embarquement/expedition mais dans<br> la validité du credit</p></td>
+      </tr>
+      <tr>
+        <td><h3 style="font-weight: 700;font-size: 20px; float:left">Reglement:</h3></td>
+    </tr>
+    <tr><td>
+      <div style="display: flex;flex-direction: column; row-gap: 20px;">
+          <div>
+            <div style="display: flex; justify-content: flex-start;margin-bottom: 20px;">
+              <h3 style="font-weight: 700;">Nature Credit (<span style="color: red;">*</span>)</h3>
+            </div>
+            <ul style="list-style: none;" >
+              <li style="display: flex; justify-content: center; column-gap: 10px;"><input type="radio" name="nat"><p>Confimé</p></li>
+              <li style="display: flex; justify-content: center; column-gap: 10px;"><input type="radio" name="nat"><p>Non Confimé</p></li>
+              <li style="display: flex; justify-content: center; column-gap: 10px;"><input type="radio" name="nat"><p>Transférable</p></li>
+              <li style="display: flex; justify-content: center; column-gap: 10px;"><input type="radio" name="nat"><p>Stand By</p></li>
+              <li style="display: flex; justify-content: center; column-gap: 10px;"><input type="radio" name="nat"><p>Revolved</p></li>
+            </ul>
+          </div>
+      </div>
+    </td></tr>
+    <tr><td>
+      <div style="display: flex;flex-direction: column; row-gap: 20px;">
+            <div style="display: flex; justify-content: flex-start;margin-bottom: 20px;">
+              <h3 style="font-weight: 700;">Frais des commissions</h3>
+            </div>
+            <h3 style="width: 180px;">Frais des commissions :(<span style="color: red;">*</span>)</h3>
+            <div style="display: flex; flex-direction: column;align-items: center; row-gap: 20px;">
+            <select size="1" class="form-control" style="width: 250px;">
+              <option>Frais Amen Bank a la charge du Béneficiaire(BEN)</option>
+              <option>Frais Amen Bank charge ordonnateur/Frais autre bank charge BEN (SHA)</option>
+              <option>Tous les frais a la charge de l'ordonnateur(OUR)</option>
+            </select>
+            <textarea form="form_id" placeholder="Commentaire"></textarea>
+          </div>
+      </div>
+    </td></tr>
+    <tr><td>
+      <div style="display: flex;flex-direction: column; row-gap: 20px;">
+            <div style="display: flex; justify-content: flex-start;margin-bottom: 20px;">
+              <h3 style="font-weight: 700;">Validité (<span style="color: red;">*</span>)</h3>
+            </div>
+            <h3 style="width: 180px;">Date Validité :(<span style="color: red;">*</span>)</h3>
+            <div style="display: flex; flex-direction: column;align-items: center; row-gap: 20px;">
+              <input type="date">
+              <textarea form="form_id" placeholder="Commentaire" style="width: 220px;"></textarea>
+            </div>
+      </div>
+    </td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="display: flex; justify-content: flex-start;">
+            <input type="submit" value="Continuer">
+            <button type="reset">Reinitialiser</button>
+          </div>
+          </form>
+    </section>
+    <section class="options-virement">
+      <ul>
+        <li class="dropdown">
+          <a>Transfert Emis</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'etr' %}">Ordre de virement</a></li>
+            <li><a href="{% url 'etrsin' %}">Transfert emis a signer</a></li>
+            <li><a href="{% url 'etrhis' %}">Historique des transferts emis</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a>Credit documentaire</a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'etr' %}">Ouverture d'une lettre de credit</a></li>
+            <li><a href="{% url 'etrcrdsin' %}">Lettres de credit a signer</a></li>
+            <li><a href="{% url 'etrcrdhis' %}">Historique des lettres de credit</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    
+
+      
+  </div> 
+  </div>
+  <script>
+      function convertToTND(montant) {
+    console.log(montant)
+    var selectedCurrency = document.querySelector('select[name="devise1"]').value;
+    console.log(selectedCurrency);
+    console.log(conversionRates[selectedCurrency])
+    var convertedValue = montant * conversionRates[selectedCurrency];
+    document.getElementById("tndval").textContent = convertedValue + " TND"
+  }
+
+  function f(s,e) {
+
+  if (s === "Autorisee"||s==="Oui") {
+    e.disabled = false;
+  } else {
+    e = true;
+  }
+
+}
+function toggleInput(){
+  var selectedValue = document.getElementById("autorisation").value;
+  var expInput = document.getElementById("exp");
+  f(selectedValue,expInput)
+}
+function toggleInput1(){
+  var selectedValue1 = document.getElementById("autorisation1").value;
+  var expInput1 = document.getElementById("exp1");
+  f(selectedValue1,expInput1)
+}
+function toggleInput3() {
+  var radios = document.getElementsByName("val");
+  var expInput = document.getElementById("exp2");
+
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].checked && radios[i].value === "autres") {
+      expInput.disabled = false;
+    } else {
+      expInput.disabled = true;
+    }
+  }
+}
+function toggleInput4() {
+  var radios = document.getElementsByName("val2");
+  var exp3jInput = document.getElementById("exp3j");
+  var exp3dInput = document.getElementById("exp3d");
+  var exp4jInput = document.getElementById("exp4j");
+  var exp4dInput = document.getElementById("exp4d");
+  var exp5Input = document.getElementById("exp5");
+  var exp6Input = document.getElementById("exp6");
+
+  if (radios[1].checked) {
+    exp3jInput.disabled = false;
+    exp3dInput.disabled = false;
+  } else {
+    exp3jInput.disabled = true;
+    exp3dInput.disabled = true;
+  }
+
+  if (radios[2].checked) {
+    exp4jInput.disabled = false;
+    exp4dInput.disabled = false;
+  } else {
+    exp4jInput.disabled = true;
+    exp4dInput.disabled = true;
+  }
+
+  if (radios[3].checked) {
+    exp5Input.disabled = false;
+  } else {
+    exp5Input.disabled = true;
+  }
+
+  if (radios[4].checked) {
+    exp6Input.disabled = false;
+  } else {
+    exp6Input.disabled = true;
+  }
+}
+
+
+
+
+
+  </script>
+{% endblock %}

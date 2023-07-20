@@ -1,0 +1,120 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section custom" >
+            <h1>Liste des transferts émis à signer</h1>
+            <div style="display: flex; margin: 15px;padding: 10px;font-size: 20px;">
+                Votre liste des transferts émis à signer est vide.
+            </div>
+        </section>
+        <section class="options-virement">
+          <ul>
+            <li class="dropdown">
+              <a>Transfert Emis</a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'etr' %}">Ordre de virement</a></li>
+                <li><a href="{% url 'etrsin' %}">Transfert emis a signer</a></li>
+                <li><a href="{% url 'etrhis' %}">Historique des transferts emis</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a>Credit documentaire</a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'etr' %}">Ouverture d'une lettre de credit</a></li>
+                <li><a href="{% url 'etrcrdsin' %}">Lettres de credit a signer</a></li>
+                <li><a href="{% url 'etrcrdhis' %}">Historique des lettres de credit</a></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        
+      
+  </div> 
+  </div>
+  <script>
+      function convertToTND(montant) {
+    console.log(montant)
+    var selectedCurrency = document.querySelector('select[name="devise1"]').value;
+    console.log(selectedCurrency);
+    console.log(conversionRates[selectedCurrency])
+    var convertedValue = montant * conversionRates[selectedCurrency];
+    document.getElementById("tndval").textContent = convertedValue + " TND"
+  }
+
+  function f(s,e) {
+
+  if (s === "Autorisee"||s==="Oui") {
+    e.disabled = false;
+  } else {
+    e = true;
+  }
+
+}
+function toggleInput(){
+  var selectedValue = document.getElementById("autorisation").value;
+  var expInput = document.getElementById("exp");
+  f(selectedValue,expInput)
+}
+function toggleInput1(){
+  var selectedValue1 = document.getElementById("autorisation1").value;
+  var expInput1 = document.getElementById("exp1");
+  f(selectedValue1,expInput1)
+}
+function toggleInput3() {
+  var radios = document.getElementsByName("val");
+  var expInput = document.getElementById("exp2");
+
+  for (var i = 0; i < radios.length; i++) {
+    if (radios[i].checked && radios[i].value === "autres") {
+      expInput.disabled = false;
+    } else {
+      expInput.disabled = true;
+    }
+  }
+}
+function toggleInput4() {
+  var radios = document.getElementsByName("val2");
+  var exp3jInput = document.getElementById("exp3j");
+  var exp3dInput = document.getElementById("exp3d");
+  var exp4jInput = document.getElementById("exp4j");
+  var exp4dInput = document.getElementById("exp4d");
+  var exp5Input = document.getElementById("exp5");
+  var exp6Input = document.getElementById("exp6");
+
+  if (radios[1].checked) {
+    exp3jInput.disabled = false;
+    exp3dInput.disabled = false;
+  } else {
+    exp3jInput.disabled = true;
+    exp3dInput.disabled = true;
+  }
+
+  if (radios[2].checked) {
+    exp4jInput.disabled = false;
+    exp4dInput.disabled = false;
+  } else {
+    exp4jInput.disabled = true;
+    exp4dInput.disabled = true;
+  }
+
+  if (radios[3].checked) {
+    exp5Input.disabled = false;
+  } else {
+    exp5Input.disabled = true;
+  }
+
+  if (radios[4].checked) {
+    exp6Input.disabled = false;
+  } else {
+    exp6Input.disabled = true;
+  }
+}
+
+
+
+
+
+  </script>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'master.html' %}
+
+    
+    <!--endSidebarapp-->
+    {% block content %}
+        <section class="content-section custom" >
+            <h1>Liste des lettres de crédit</h1>
+                <div style="display: flex; margin: 15px;padding: 10px;font-size: 20px;">
+                Votre liste des lettres de crédit est vide.
+
+            </div>
+        </section>
+        <section class="options-virement">
+          <ul>
+            <li class="dropdown">
+              <a>Transfert Emis</a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'etr' %}">Ordre de virement</a></li>
+                <li><a href="{% url 'etrsin' %}">Transfert emis a signer</a></li>
+                <li><a href="{% url 'etrhis' %}">Historique des transferts emis</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a>Credit documentaire</a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'etr' %}">Ouverture d'une lettre de credit</a></li>
+                <li><a href="{% url 'etrcrdsin' %}">Lettres de credit a signer</a></li>
+                <li><a href="{% url 'etrcrdhis' %}">Historique des lettres de credit</a></li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+        
+
+{% endblock %}
