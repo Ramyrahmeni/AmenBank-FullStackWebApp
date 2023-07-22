@@ -29,14 +29,13 @@ def login(request):
                 u.nombre_connexions += 1
                 u.last_login = datetime.now()
                 u.save()
-                messages.success(request, "Nombre de connexions mis à jour avec succès.")
                 return redirect('home')  # Redirect to home.html
             else:
-                messages.error(request, 'Invalid password')
+                messages.error(request, 'Le mot de passe que vous avez saisi(e) n’est pas associé(e) à un compte.')
         except utilisateur.DoesNotExist:
-            messages.error(request, 'Invalid login')
+            messages.error(request, 'Le login que vous avez saisi(e) n’est pas associé(e) à un compte.')
         except Exception as e:
-            messages.error(request, f"An error occurred: {str(e)}")
+            messages.error(request, f"Erreur: {str(e)}")
 
     return render(request, 'form.html')
 @login_required
@@ -46,9 +45,12 @@ def home(request):
     print(login_value)
     # Retrieve the accounts based on the login value
     accounts = Compte.objects.filter(login__login=login_value)
-    
+    s=0
+    for acc in accounts:
+        s+=acc.solde
     context = {
         'accounts': accounts,
+        'total' : s
     }
     return render(request, 'home.html', context)
 def settings(request):
@@ -242,6 +244,7 @@ def mvmparop_view(request):
         account_number = request.POST.get('account_number')
         display_option = request.POST.get('display_options')
         acc=Compte.objects.filter(num_compte=account_number)
+        ch=request.method
         acc=acc[0]
         print(acc)
         solde=acc.solde
@@ -275,6 +278,7 @@ def mvmparop_view(request):
             'display_option': display_option,
             'movements': movements,
             'chart_data': json.dumps(chart_data),  # Convert data to JSON format
+            'ch':ch
         }
         print('rendered')
         return render(request, 'mvmparop.html', context)

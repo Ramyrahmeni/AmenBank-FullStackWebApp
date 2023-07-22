@@ -6,57 +6,71 @@
         <section class="content-section custom" >
             <h1>Messages envoyés</h1>
             {% if messages_agences or messages_support %}
-            <h3 style="font-weight: 700;margin-top: 20px;">Message vers agences</h3>
-              <table>
-                  <thead>
-                      <tr>
-                          <th style="color: rgb(176, 175, 175);">Objet</th>
-                          <th style="color: rgb(176, 175, 175);">Numero de telephone</th>
-                          <th style="color: rgb(176, 175, 175);">Agence</th>
-                          <th style="color: rgb(176, 175, 175);">Message</th>
-                      </tr>
-                  </thead>
-              </table>
-              <table>
-                  <tbody>
-                    {% for m in messages_agences %}
-                    <tr>
-                        <td data-label="Objet">{{ m.objet }}</td>
-                        <td data-label="Numero de telephonee">{{ m.numero_tel}}</td>
-                        <td data-label="Agence">{{ m.agence }}</td>
-                        <td data-label="  Message">{{ m.message }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-          <h3 style="font-weight: 700; margin-top: 20px;">Message vers support</h3> 
-              <table>
-                  <thead>
-                      <tr>
-                           <th style="color: rgb(176, 175, 175);">Numero de telephone</th>
-                          <th style="color: rgb(176, 175, 175);">Numero fax</th>
-                          <th style="color: rgb(176, 175, 175);">Fournisseur internet</th>
-                          <th style="color: rgb(176, 175, 175);">Message</th>
-                      </tr>
-                  </thead>
-              </table>
-              <table cellpadding="0" cellspacing="0" border="0">
-                  <tbody>
-                    {% for m in messages_support %}
-                    <tr>
-                        <td data-label="Numero de telephonee">{{ m.numero_tel}}</td>
-                        <td data-label="Numero fax">{{ m.numero_fax}}</td>
-                        <td data-label="Fournisseur internet">{{ m.fournisseur_internet}}</td>
-                        <td data-label=" Message">{{ m.message_erreur }}</td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% else %}
-              <div style="display: flex; margin: 15px;padding: 10px;font-size: 20px;">
-                  Vous n'avez aucun message envoyé.
-              </div>
-            {% endif %}
+                <h3 style="font-weight: 700;margin-top: 20px;">Message vers agences</h3>
+                {% if messages_agences %}
+                        <div class="tbl-header">
+                            <table cellpadding="0" cellspacing="0" border="0">
+                                <thead>
+                                    <tr>
+                                        <th>Objet</th>
+                                        <th>Numero de telephone</th>
+                                        <th>Agence</th>
+                                        <th>Message</th>                        
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="tbl-content">
+                            <table cellpadding="0" cellspacing="0" border="0">
+                                <tbody>
+                                    {% for m in messages_agences %}
+                                    <tr>
+                                        <td data-label="Objet">{{ m.objet }}</td>
+                                        <td data-label="Numero de telephonee">{{ m.numero_tel}}</td>
+                                        <td data-label="Agence">{{ m.agence }}</td>
+                                        <td data-label="  Message">{{ m.message }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        Vous n'avez aucun message envoyé au support.
+                    {% endif %}
+                    <h3 style="font-weight: 700; margin-top: 20px;">Message vers support</h3> 
+                    {% if messages_support %}
+                        <div class="tbl-header">
+                            <table cellpadding="0" cellspacing="0" border="0">
+                                <thead>
+                                    <tr>
+                                        <th>Numero de telephone</th>
+                                        <th>Numero fax</th>
+                                        <th>Fournisseur internet</th>
+                                        <th>Message</th>                        
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                        <div class="tbl-content">
+                            <table cellpadding="0" cellspacing="0" border="0">
+                                <tbody>
+                                    {% for m in messages_support %}
+                                    <tr>
+                                        <td data-label="Numero de telephonee">{{ m.numero_tel}}</td>
+                                        <td data-label="Numero fax">{{ m.numero_fax}}</td>
+                                        <td data-label="Fournisseur internet">{{ m.fournisseur_internet}}</td>
+                                        <td data-label=" Message">{{ m.message_erreur }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                            <div style="display: flex; margin: 15px;padding: 10px;font-size: 20px;">
+                                Vous n'avez aucun message envoyé au support.
+                            </div>
+                    {% endif %}
+                {% endif %}
         </section>
   
         <section class="options-virement">

@@ -34,27 +34,26 @@
                 </div>
           </section>
   
-    <section class="options-virement">
-        <ul>
-          <li>
-            <a href="mes.html">Rediger un message a l'agence</a>
-          </li>
-          <li class="dropdown">
-            <a href="messuppo.html">Rediger un message au support</a>
-        </li>
-        <li class="dropdown">
-            <a href="mesrec.html">Messages recus</a>
-        </li>
-
-        <li class="dropdown">
-            <a href="mesenv.html">Messages envoyes</a>
-        </li> 
-        <li class="dropdown">
-            <a href="mesins.html">Messages en instance</a>
-        </li>  
-        <li class="dropdown">
-            <a href="messupp.html">Messages supprimes</a>
-        </li>    
-    </ul>
-      </section>
+          <section class="options-virement">
+            <ul>
+              <li>
+                <a href="{% url 'mes' %}">Rediger un message a l'agence</a>
+            </li>
+            <li class="dropdown">
+                <a href="{% url 'messuppo' %}">Rediger un message au support</a>
+            </li>
+            <li class="dropdown">
+                <a href="{% url 'mesrec' %}">Messages recus</a>
+            </li>
+            <li class="dropdown">
+                <a href="{% url 'mesenv' %}">Messages envoyes</a>
+            </li>
+            <li class="dropdown">
+                <a href="{% url 'mesins' %}">Messages en instance</a>
+            </li>
+            <li class="dropdown">
+                <a href="{% url 'messupp' %}">Messages supprimes</a>
+            </li>
+        </ul>
+          </section>
       {% endblock %}
